@@ -1,0 +1,528 @@
+
+
+{% load i18n %}
+{% trans alert %}
+
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+   
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CAP-MAT </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+  
+   <!-- CSS here -->
+      <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+          <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+     
+      
+      <style>
+  
+  
+        .notification {
+          position: relative;
+          width: 2em;
+          height: 2em;
+        }
+        .notification svg {
+          width: 2em;
+          height: 2em;
+        }
+        .notification svg > path {
+          fill: #FFFFFF;
+        }
+        .notification--bell {
+          animation: bell 2.2s linear infinite;
+          transform-origin: 50% 0%;
+        }
+         .notification--bellClapper {
+          animation: bellClapper 2.2s 0.1s linear infinite;
+        }
+        .notification--num {
+          position: absolute;
+          top: 0%;
+          left: 60%;
+          font-size: 1rem;
+          border-radius: 50%;
+          width: 1.75em;
+          height: 1.75em;
+          background-color: #FF4C13;
+          
+          color: #FFFFFF;
+          text-align: center;
+          line-height: 1.7em;
+          animation: notification 3.2s ease;
+        }
+        
+        @keyframes bell {
+          0%, 25%, 75%, 100% {
+          transform: rotate(0deg);
+          }
+          40% {
+          transform: rotate(2deg);
+          }
+          45% {
+          transform: rotate(-2deg);
+          }
+          55% {
+          transform: rotate(1deg);
+          }
+          60% {
+          transform: rotate(-1deg);
+          }
+        }
+        @keyframes bellClapper {
+          0%, 25%, 75%, 100% {
+          transform: translateX(0);
+          }
+          40% {
+          transform: translateX(-0.15em);
+          }
+          45% {
+          transform: translateX(0.15em);
+          }
+          55% {
+          transform: translateX(-0.1em);
+          }
+          60% {
+          transform: translateX(0.1em);
+          }
+        }
+        @keyframes notification {
+          0%, 25%, 75%, 100% {
+          opacity: 1;
+          }
+          30%, 70% {
+          opacity: 0;
+          }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </style>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </head>
+  
+  <body>
+      <!-- Preloader Start -->
+      <div id="preloader-active">
+          <div class="preloader d-flex align-items-center justify-content-center">
+              <div class="preloader-inner position-relative">
+                  <div class="preloader-circle"></div>
+                  <div class="preloader-img pere-text">
+                      <img src="" alt="">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- Preloader Start -->
+      <header>
+        <!-- Header Start -->
+        <div class="header-area header_area header-transparent">
+            <div class="main-header">
+            <div class="header-bottom  header-sticky">
+                <div class="container-fluid">
+                  <div class="row align-items-center">
+                    
+      
+                    <div class="col-xl-2 col-lg-1 col-md-1">
+                      <div class="logo">
+                      <a href="{% url 'home' %}"><img src="{% static 'assets/img/logo/Inedit.jpg' %}" alt="CAP-MAT"></a>
+                      </div>
+                    </div>
+                  
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                      <!-- Main-menu -->
+                      <div class="main-menu f-right d-none d-lg-block">
+      
+    
+      
+      
+                        <nav> 
+                          <ul id="navigation">                                                                                                                                     
+                            <li><a href="{% url 'home' %}">{% trans 'Accueil' %}</a></li>
+                            
+                          
+                            
+                            <li><a href="{% url 'question_an' %}" >Espace d'Échanges et de Réflexion</a> </li>
+                            <li><a href="{% url 'students:MesTechnologies_list' %}" >La Banque de technologies</a> </li>
+                            <li><a href="{% url 'students:forum_list' %}" >Projets & Idées</a> </li>
+    
+                        
+                           
+    
+      
+                             
+                          </ul>
+                        </nav>
+                      </div>
+                    </div>             
+                
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                      <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Header End -->
+      </header>
+    
+  
+    <main>
+
+        <div class="slider-area slider-bg ">
+            <div class="slider-active dot-style">
+                <div class="single-slider d-flex align-items-center slider-height ">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-9 ">
+                           
+                                    <h1 data-animation="fadeInLeft" data-delay=".3s" style="color: #FFFFFF;">La Banque de Technologies</h1>
+                                
+                                  
+                                  
+                        {% load widget_tweaks %}
+<div>
+
+  <form  method="get" class="search-box">
+                     
+
+	   
+    <h5  style="color: #FFFFFF;">Événement à détecter</h5>
+ 
+<h4 style="color: #FFFFFF;">{% render_field filter.form.type_evt class="form-control" %} </h4>
+
+
+    <h5 style="color: #FFFFFF;" >Domaine d'application</h5>
+    
+    <h4 style="color: #FFFFFF;">{% render_field filter.form.domaine class="form-control" %} </h4>
+
+  <h5 style="color: #FFFFFF;">La technologie utilisée</h5>
+
+  <h4 style="color: #FFFFFF;">	{% render_field filter.form.technologie_utilisee class="form-control" %}</h4>
+
+
+
+
+
+
+
+    <div class="section-head text-center col-sm-12">
+
+      <button type="submit"  class="btn radius-btn" ><span>Lancer la recherche</span></button>   
+      </div>
+     
+
+
+
+
+
+
+
+
+</form>	
+
+
+</div>
+                     
+             
+                   
+                                
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="hero__img d-none d-lg-block f-right">
+                                    <img src="{% static 'assets/img/hero/hero_right.png' %}" alt="" data-animation="fadeInRight" data-delay="1s">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+                
+                
+            </div>
+            <!-- Slider Shape -->
+            <div class="slider-shape d-none d-lg-block">
+                <img class="slider-shape1" src="assets/img/hero/top-left-shape.png" alt="">
+                <img class="slider-shape2" src="assets/img/hero/right-top-shape.png" alt="">
+                <img class="slider-shape3" src="assets/img/hero/left-botom-shape.png" alt="">
+            </div>
+            <!-- slider Social -->
+            <div class="slider-social d-none d-md-block">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fas fa-globe"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+
+        </div>
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <!--Services Area Start -->
+       <div class="services-area section-padding30 fix">
+        <div class="container">
+            <!-- Section Tittle -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-tittle text-center mb-100">
+                  
+                      <h4>Dans la section « Banque de Technologies », vous accédez à l’ensemble des technologies de la plateforme CapMat.</h4>
+                      <h6>Résultats</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              {% for user in filter.qs %}
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="services-wrapper mb-50">
+                        <div class="single-services">
+                      
+                            <div class="services-cap">
+                            
+                                <h3>{{user.nom_capteurt}}</h3>
+                                <h6> {{user.created_at}}</h6>
+                                <a href="{% url 'students:forum-by' user.owner %}">{{user.owner.student.nom}} {{user.owner.student.prenom}}</a><br>
+                                <a href="#0">{{user.owner.student.fonction}}</a><br>
+                          
+                                <a href="#0">{{user.created_at}}</a>
+                               
+                   
+                              
+                                <a>{{user.technologie_utilisee}}</a>
+                                <p>{{user.description_projet}}</p>
+<a href="{% url 'capteur_public' user.slug %}"  class="get-btn"><span><i class="ti-arrow-right"></i>CONSULTER</span></a>
+
+
+
+
+
+
+
+
+
+
+                             
+                              
+                            </div>
+                        </div>
+                        <div class="services-shape">
+                          
+                            <img src="{% static 'assets/img/gallery/shape-services.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+     
+                {% empty %}
+
+                <p class="text-center">  No data are availbe about this Case Study</p>   
+
+
+                {% endfor %}
+
+
+
+            </div>
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+   
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+
+    <!-- JS here -->
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js'%}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js'%}"></script>
+        <script src="{% static 'assets/js/popper.min.js'%}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js'%}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{% static 'assets/js/jquery.slicknav.min.js'%}"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{% static 'assets/js/owl.carousel.min.js'%}"></script>
+        <script src="{% static 'assets/js/slick.min.js'%}"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{% static 'assets/js/wow.min.js'%}"></script>
+		<script src="{% static 'assets/js/animated.headline.js'%}"></script>
+        <script src="{% static 'assets/js/jquery.magnific-popup.js'%}"></script>
+
+		<!-- Nice-select, sticky -->
+        <script src="{% static 'assets/js/jquery.nice-select.min.js'%}"></script>
+		<script src="{% static 'assets/js/jquery.sticky.js'%}"></script>
+        
+        <!-- contact js -->
+        <script src="{% static 'assets/js/contact.js'%}"></script>
+        <script src="{% static 'assets/js/jquery.form.js'%}"></script>
+        <script src="{% static 'assets/js/jquery.validate.min.js'%}"></script>
+        <script src="{% static 'assets/js/mail-script.js'%}"></script>
+        <script src="{% static 'assets/js/jquery.ajaxchimp.min.js'%}"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="{% static 'assets/js/plugins.js'%}"></script>
+        <script src="{% static 'assets/js/main.js'%}"></script>
+        
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          
+                  
+
+                
+                      
+                      
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                  
+
+
+                  
+           
+
+
+
+
+

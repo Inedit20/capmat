@@ -1,0 +1,1004 @@
+{% load i18n %}
+{% trans alert %}
+
+
+{% load static%}
+<!DOCTYPE html>
+ <html lang="zxx">
+
+    <head>
+
+    	<!-- Metas -->
+        <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<meta name="keywords" content="HTML5 Template Arco onepage themeforest" />
+		<meta name="description" content="Arco - Onepage Multi-Purpose HTML5 Template" />
+		<meta name="author" content="" />
+
+		<!-- Title  -->
+		<title>CAP-MAT</title>
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="{% static 'acro/img/favicon.ico' %}" />
+
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet"/>
+
+		<!-- Plugins -->
+		<link rel="stylesheet" href="{% static 'acro/css/plugins.css'%}" />
+
+        <!-- Core Style Css -->
+        <link rel="stylesheet" href="{% static 'acro/css/style.css'%}" />
+
+    </head>
+
+    <body>
+
+    	<!-- =====================================
+    	==== Start Loading -->
+
+    	<div class="loading">
+    		<div class="text-center middle">
+    			<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    		</div>
+    	</div>
+        
+    	<!-- End Loading ====
+    	======================================= -->
+
+       
+    	<!-- =====================================
+    	==== Start Navbar -->
+
+		<nav class="navbar navbar-expand-lg">
+			<div class="container">
+
+            <!-- Logo -->
+      
+                
+         
+               
+         
+       
+
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="icon-bar"><i class="fas fa-bars"></i></span>
+			  </button>
+
+			  <!-- navbar links -->
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    <ul class="navbar-nav ml-auto">
+			      <li class="nav-item">
+			        <a class="nav-link active" href="#" data-scroll-nav="0">{% trans 'Accueil' %}</a>
+			      </li>
+			      <li class="nav-item">
+                    <a class="nav-link" href="#" data-scroll-nav="1">{% trans 'À Propos' %}</a>
+                  </li>
+		
+			      <li class="nav-item">
+			        <a class="nav-link" href="{% url 'student_signup' %}"  >{% trans 'Créer un compte'%}</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="{% url 'login' %}"  >{% trans 'Se connecter'%}</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link"><span style="font-size:25px" class="flag-icon flag-icon-us"></span></a>
+                   
+               
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link"><span style="font-size:25px" class="flag-icon flag-icon-fr"></span></a>
+                   
+               
+                  </li>
+                
+			    </ul>
+			  </div>
+			</div>
+		</nav>
+
+    	<!-- End Navbar ====
+    	======================================= -->
+
+
+    	<!-- =====================================
+    	==== Start Header -->
+
+    	<header class="header valign bg-img" data-scroll-index="0" data-overlay-dark="5" data-background="{% static 'acro/img/bg2.jpg'%}" data-stellar-background-ratio="0.5">
+
+            <video class="bg-vid" poster="{% static 'acro/img/bg2.jpg'%}" autoplay="" loop="" muted="">
+                <source src="{% static 'acro/video/video.mp4' %}" type="video/mp4">
+            </video>
+
+    		<div class="container">
+    			<div class="row">
+
+
+                    <div class="full-width text-center caption mt-30">
+    					<h4>{% trans 'Bienvenue sur CAP-MAT' %}</h4>
+                        <h1>{% trans 'Collobartive Sensor Platform' %}</h1>
+                        <p>{% trans 'Le programme CAPteurs intelligents pour la transformation des MATériaux CAP-MAT est cofinancé par l&#039Union Européenne dans le cadre opérationnel FEDER-FSE Lorraine et Massif des Vosges 2014-2020' %}.</p>
+                        <a href="#0" class="butn butn-light mt-30">
+                            <span>Learn More</span>
+                        </a>
+                        <a href="#0" class="butn butn-bg mt-30">
+                            <span>Get Started</span>
+                        </a>
+                        
+                        
+                
+    				</div>
+
+    			
+    			</div>
+    		</div>
+    	</header>
+
+    	<!-- End Header ====
+    	======================================= -->
+
+
+
+
+
+               
+        <div class="content">
+                                  
+            <h4>{{quiz.nom}} {{quiz.prenom}}</h4>
+            </br>
+            <span> {% if quiz.fonction.exist %}{{ quiz.fonction}}  {% endif %}</span>
+           
+            {% if quiz.mots_cles  %}<p>Mots-clés : <span>{{ quiz.mots_cles}}{% endif %}</span> </p>
+          
+           
+            {% if quiz.interests.all  %}<p>Disciplines scientifiques : <span>{% for d in quiz.interests.all %} {{ d.name}}, {% endfor %}{% endif %}</span> </p>
+           
+            {% if quiz.adresse_email %}<p>Adresse email de contact : <span>{{quiz.adresse_email}}</span>{% endif %} </p>
+            {% if quiz.laboratoire %}<p>Université : <span>{{quiz.laboratoire }}</span>{% endif %} </p>
+            {% if quiz.composante %}<p>Composante : <span>{{quiz.composante }}</span>{% endif %} </p>
+            {% if quiz.laboratoire %}<p>Laboratoire : <span>{{quiz.laboratoire }}</span>{% endif %} </p>
+           
+            <div style="justify-content: center" class="content">
+              <a href="{% url 'students:expert_confirmation'  pk_1=projet.pk  pk_2=quiz.pk  %}" class="genric-btn success-border circle">Ajouter au projet</a>
+              <a href="{% url 'student_profile' pk_1=projet.pk  pk_2=quiz.pk   %}"  class="genric-btn success-border circle">Afficher le profil détaillé</a>
+    
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
+
+
+
+
+
+
+
+
+        <!-- =====================================
+        ==== Start Hero -->
+
+        <section class="hero section-padding" data-scroll-index="1">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="intro offset-lg-1 col-lg-10 text-center mb-80">
+                        <h3>{% trans 'Bienvenue sur CAP-MAT' %}</h3>
+                        <h4>{% trans 'Qui sommes-nous et que pouvons-nous faire ?' %}</h4>
+                        <p>{% trans 'Grâce à cette plateforme, initiez et gérez des projets collaboratifs de développement de capteurs.' %}</p>
+                   
+                    
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="item text-center mb-md50">
+                            <span><img src="{% static 'acro/img/portfolio/1.png'%}" alt="image"></span>
+                            <h5>IJL (Institut Jean Lamour) </h5>
+                            <p>L'Institut Jean Lamour est un laboratoire de recherche en Science des Matériaux : matériaux, métallurgie, plasmas, surface, électronique, nanomatériaux. C'est une unité mixte de recherche (7198) de l'Université de Lorraine et du CNRS.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="item text-center mb-md50">
+                            <span><img src="{% static 'acro/img/portfolio/2.png'%}" alt="image"></span>
+                            <h5>ERPI (Équipe de Recherche sur les Processus Innovatifs)</h5>
+                            <p> L’ERPI est un laboratoire de Génie Industriel spécialisé dans l’étude des processus d’innovation. Ses activités concernent les méthodes, les outils et les compétences permettant l’optimisation du pilotage des projets innovants.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="item text-center">
+                            <span><img src="{% static 'acro/img/portfolio/3.png'%}" alt="image"></span>
+                           
+                            <h5>GREEN (Groupe de Recherche en Energie Electrique de Nancy)</h5>
+                            <p>Le GREEN est un laboratoire d'accueil de l'Ecole Doctorale "Informatique, Automatique, Electronique, Electrotechnique, Mathématiques" (IAEM-Lorraine). Le GREEN fait partie de l'Institut CARNOT ICEEL.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- End Hero ====
+        ======================================= -->
+
+
+        <!-- =====================================
+        ==== Start Section-box -->
+
+
+        <!-- End Section-box ====
+        ======================================= -->
+
+
+        <!-- =====================================
+        ==== Start Services -->
+
+
+
+
+
+        <section class="services section-padding" data-scroll-index="2">
+            <div class="container">
+                <div class="row">
+
+                 
+                    <div class="section-head text-center col-sm-12">
+                        <h4>Les services CAP-</h4>
+                        <h6>Awesome Featruse</h6>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="item mb-md50">
+                            <span class="icon icon-basic-book-pencil"></span>
+                            <h6>Créer un Projet</h6>
+                            <p>Dans la section créer un projet, vous pouvez compléter les caractéristiques techniques de projet que vous proposez.</p>
+                            
+
+
+
+
+                            <ul class="actions">
+                               
+                               <li><a href="{% url 'students:lanceur_projet_home' %}" class="butn butn-light mt-30"><span>COMMENCER</span></a></li>
+                           </ul>
+           
+                           </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 bord">
+                        <div class="item mb-md50">
+                            <span class="icon icon-basic-pencil-ruler"></span>
+                            <h6> Projets</h6>
+                            <p>Dans la  section projets, vous accédez à l'ensemble de projets créer, ainsi que la liste des experts correspondants.</p>
+                        
+                            <ul class="actions">
+                           
+                               <li><a href="{% url 'students:mes_projets' %}" class="butn butn-light mt-30"><span>CONSULTER</span></a></li>
+                           </ul>
+                           
+                           </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="item mb-md50">
+                            <span class="icon icon-basic-case"></span>
+                            <h6>Collaborations</h6>
+                            <p>Dans la section collaborations, vous accédez à la liste des projets auxquels je peux participer ou je participe. </p>
+                       
+                            <ul class="actions">
+                       
+                               <li><a href="{% url 'students:collaborations' %}" class="butn butn-light mt-30"><span>CONSULTER</span></a></li>
+                           
+                           </ul>
+                           </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="item mb-md50">
+                            <span class="icon icon-basic-globe "></span>
+                            <h6>La Banque des Technologies</h6>
+                            <p>Catalogue des technologies proposées par les utilisateurs du site.</p>
+                                
+                            <ul class="actions">
+                               <li><a href="{% url 'students:technologies' %}"class="butn butn-light mt-30"><span>CONSULTER</span></a></li>
+                           
+                           </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 bord">
+                        <div class="item mb-sm50">
+                            <span class="icon icon-basic-ipod"></span>
+                            <h6>Annuaire des Experts </h6>
+                            <p>Liste des personnes ressources. </p>
+                            <p></p></br>
+                            <p></p>
+                            <ul class="actions">
+                               
+                               <li><a href="{% url 'students:expert_home' %}"class="butn butn-light mt-30"><span>CONSULTER</span></a></li>
+                           </ul>
+                           </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="item">
+                            <span class="icon icon-basic-gear"></span>
+                            <h6>Espace de Réflexion</h6>
+                            <p>Forum et  Q&A sur les capteurs intelligents. </p>
+                            <p></p></br>
+                            <p></p>
+                            <ul class="actions">
+                               
+                               <li><a href="{% url 'question_an' %}"class="butn butn-light mt-30"><span>CONSULTER</span></a></li>
+                           </ul>
+                           </div>
+                    </div>
+
+                </div>
+            </div>
+
+      
+ 
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- End Services ====
+        ======================================= -->
+
+
+
+
+
+        <!-- =====================================
+        ==== Start Section-box -->
+
+        <section class="section-box">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-lg-6 half-content bg-gray">
+                        <div class="box-white">
+
+                            <div class="content mb-50">
+                                <h3 class="mb-15">Le Projet CAP-MAT</h3>
+                             <p>Le projet CAP-MAT se positionne dans la thématique « usine du futur » : il s’agit de développer des capteurs intelligents pour la transformation des matériaux et ce, en intégrant la chaine allant des ressources au produits finis.</p>
+                               
+
+                            </div>
+
+                            <!-- accordion -->
+
+                            <div class="accordion">
+
+                                <div class="item active">
+                                    <div class="title">
+                                        <h6>Identifying Problem Source</h6>
+                                    </div>
+                                    <div class="accordion-info active">
+                                        <p>Lorem ipsum dolor sit amet, in quodsi vulputate pro. Ubique maluisset vel te, his dico vituperata ut. in quodsi Ubique maluisset vel te, his dico vituperata ut in quodsi Ubique.</p>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <div class="title">
+                                        <h6>Protecting brand integrity</h6>
+                                    </div>
+                                    <div class="accordion-info">
+                                        <p>Lorem ipsum dolor sit amet, in quodsi vulputate pro. Ubique maluisset vel te, his dico vituperata ut.vituperata ut in quodsi in quodsiUbique maluisset vel te, his dico vituperata ut in quodsiUbique. in quodsi vulputate.</p>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <div class="title">
+                                        <h6>We Are Creative And Professional</h6>
+                                    </div>
+                                    <div class="accordion-info">
+                                        <p>Lorem ipsum dolor sit amet, in quodsi vulputate pro. Ubique maluisset vel te, his dico vituperata ut. in vituperata ut in quodsi maluisset vel te, his dico vituperata ut in quodsi Ubique. in quodsi vulputate.</p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 bg-img half-img bgimg-height valign" data-background="{% static 'acro/img/2.jpg'%}">
+                        <a class="vid text-center full-width" href="https://vimeo.com/127203262">
+                            <span class="vid-butn">
+                                <i class="fas fa-play-circle"></i>
+                            </span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+ 
+
+
+        <!-- =====================================
+        ==== Start Contact -->
+
+        <section class="contact section-padding" data-scroll-index="6">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="section-head text-center col-sm-12">
+                        <h4>Contact</h4>
+                        <h6>N'hésitez pas à nous contacter</h6>
+                    </div>
+
+                    <div class="offset-lg-2 col-lg-8 offset-md-1 col-md-10">
+                        <form class="form" id="contact-form" method="post" action="contact.php">
+
+                            <div class="messages"></div>
+
+                            <div class="controls">
+
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input id="form_name" type="text" name="name" placeholder="Name" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input id="form_email" type="email" name="email" placeholder="Email" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input id="form_subject" type="text" name="subject" placeholder="Subject">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <textarea id="form_message" name="message" placeholder="Message" rows="4" required="required"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 text-center">
+                                        <button type="submit"><span>Send Message</span></button>
+                                    </div>
+
+                                </div>                             
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- End Contact ====
+        ======================================= -->
+
+
+
+		<section class="section-box" data-scroll-index="1">
+			<div class="container-fluid">
+				<div class="row">
+	  
+					<div class="col-lg-12 half-content bg-gray">
+						<div class="box-white">
+	  
+	  
+							<!-- Skills -->
+	  
+							<div class="skills">
+								<div class="row">
+									<img src="{% static 'images/Image_logos.png'%}" alt="image">
+								</div>
+							</div>
+						</div>
+					</div>
+	  
+				</div>
+			</div>
+		</section>
+	  
+
+        <!-- =====================================
+        ==== Start Footer -->
+
+        <footer class="text-center">
+            <div class="container">
+
+                <!-- Logo -->
+                <a class="logo" href="#">
+                    <img src="" alt="logo">          
+                </a>
+           
+
+                <p>&copy; 
+
+                 2020 ERPI Laboratory. All Rights Reserved.
+                    
+                    CAPteurs intelligents pour la transformation des MATériaux (des ressources aux produits : CAP-MAT" est cofinancé par l'union européenne dans le cadre opérationnel FEDER-FSE Lorraine et Massif des Vosges 2014-2020
+                    .</p>
+
+            </div>
+        </footer>
+
+        <!-- End Footer ====
+        ======================================= -->
+
+
+
+
+       
+        <!-- jQuery -->
+        <script src="{% static 'acro/js/jquery-3.0.0.min.js' %}"></script>
+        <script src="{% static 'acro/js/jquery-migrate-3.0.0.min.js' %}"></script>
+
+        <!-- popper.min -->
+        <script src="{% static 'acro/js/popper.min.js' %}"></script>
+
+        <!-- bootstrap -->
+        <script src="{% static 'acro/js/bootstrap.min.js' %}"></script>
+
+        <!-- scrollIt -->
+        <script src="{% static 'acro/js/scrollIt.min.js' %}"></script>
+
+        <!-- jquery.waypoints.min -->
+        <script src="{% static 'acro/js/jquery.waypoints.min.js' %}"></script>
+
+        <!-- jquery.counterup.min -->
+        <script src="{% static 'acro/js/jquery.counterup.min.js' %}"></script>
+
+        <!-- owl carousel -->
+        <script src="{% static 'acro/js/owl.carousel.min.js' %}"></script>
+
+        <!-- jquery.magnific-popup js -->
+        <script src="{% static 'acro/js/jquery.magnific-popup.min.js' %}"></script>
+
+        <!-- stellar js -->
+        <script src="{% static 'acro/js/jquery.stellar.min.js' %}"></script>
+
+        <!-- isotope.pkgd.min js -->
+        <script src="{% static 'acro/js/isotope.pkgd.min.js' %}"></script>
+
+        <!-- YouTubePopUp.jquery -->
+        <script src="{% static 'acro/js/YouTubePopUp.jquery.js' %}"></script>
+
+        <!-- Map -->
+        <script src="{% static 'acro/js/map.js' %}"></script>
+
+        <!-- validator js -->
+        <script src="{% static 'acro/js/validator.js' %}"></script>
+
+        <!-- custom scripts -->
+        <script src="{% static 'acro/js/scripts.js' %}"></script>
+
+        <!-- google map api -->
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK7lXLHQgaGdP3IvMPi1ej0B9JHUbcqB0&callback=initMap">
+        </script>
+
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="support-area section-bg pt-150 pb-150" data-background="assets/img/gallery/section_bg03.jpg">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-5">
+                <div class="support-caption">
+                <!-- Section Tittle -->
+                <div class="section-tittle section-tittle5">
+                    <span>Get your domain</span>
+                    <h2>24/7 Expert Support</h2>
+                    <p class="support-details">Our expert team is always on hand to help answer your questions, get you started, and grow your presence online. You can call, chat or email us any time!</p>
+                </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="support-number">
+                    <!-- Single contact -->
+                    <div class="single-contact text-center">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-volume"></i>
+                        </div>
+                        <div class="contact-number">
+                            <span>+1 514 648</span>
+                        </div>
+                    </div>
+                    <!-- Single contact -->
+                    <div class="single-contact text-center">
+                        <div class="contact-icon">
+                            <i class="far fa-comment"></i>
+                        </div>
+                        <div class="contact-number">
+                            <span>Text Us</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+{% load static %}
+<!doctype html>
+
+<html class="no-js" lang="zxx">
+
+    <head>
+
+    	<!-- Metas -->
+        <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<meta name="keywords" content="HTML5 Template Arco onepage themeforest" />
+		<meta name="description" content="Arco - Onepage Multi-Purpose HTML5 Template" />
+		<meta name="author" content="" />
+
+		<!-- Title  -->
+		<title>CAP-MAT</title>
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="img/favicon.ico" />
+
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" rel="stylesheet">
+
+		<!-- Plugins -->
+		<link rel="stylesheet" href="{% static 'acro/css/plugins.css' %}" />
+
+        <!-- Core Style Css -->
+        <link rel="stylesheet" href="{% static 'acro/css/style.css' %}" />
+
+    </head>
+    
+    <body>
+
+    	<!-- =====================================
+    	==== Start Loading -->
+
+    	<div class="loading">
+    		<div class="text-center middle">
+    			<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    		</div>
+    	</div>
+        
+    	<!-- End Loading ====
+    	======================================= -->
+
+		<!-- =====================================
+    	==== Start Navbar -->
+
+		<nav class="navbar navbar-expand-lg">
+			<div class="container">
+
+				<h5 style="color: #FFFFFF;">
+					<a  href="{% url 'home' %}">Cap-Mat  </a>     
+				</h5>
+
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="icon-bar"><i class="fas fa-bars"></i></span>
+			  </button>
+
+			  <!-- navbar links -->
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    <ul class="navbar-nav ml-auto">
+			      <li class="nav-item">
+			        <a class="nav-link active" href="{% url 'home' %}" style="color: #FFFFFF;">Home</a>
+			      </li>
+			      <li class="nav-item">
+                    <a class="nav-link" href="{% url 'question_an' %}" data-scroll-nav="0">Espace d'Échanges et de Réflexion</a>
+                  </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="{% url 'students:MesTechnologies_list' %}" >La Banque de technologies</a>
+				
+				</li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'students:forum_list' %}" >Projets & Idées</a>
+                  </li>
+		
+			    </ul>
+			  </div>
+			</div>
+		</nav>
+
+    	<!-- End Navbar ====
+    	======================================= -->
+
+		<!-- ====== Header ======  -->
+		<section id="home" class="min-header" data-scroll-index="0">
+
+			<div class="v-middle mt-30">
+				<div class="container">
+					<div class="row">
+
+						<div class="text-center col-md-12">
+							<h5>Espace d'Échanges et de Réflexion</h5>
+							<a href="{% url 'students:MesTechnologies_list' %}">La Banque de technologies</a>
+							<a href="{% url 'students:forum_list' %}">Projets & Idées</a>
+						</div>
+
+					</div>
+				</div><!-- /row -->
+			</div><!-- /container -->
+		</section>
+		<!-- ====== End Header ======  -->
+
+		<!--====== Blog ======-->
+		<section class="blogs section-padding">
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-md-8">
+						<div class="posts">
+                            {% for question in questions %}
+							<div class="post">
+								<div class="post-img">
+									<a class="half-width">
+										<img src="{% static 'acro/img/question.jpg' %}" alt="">
+									</a>
+								</div>
+								<div class="content text-center">
+									<div class="post-meta">
+										<div class="post-title">
+											<h5>
+
+                                         
+												<a href="/question/{{ question.qid }}/{{ question.slug }}">{{ question.question_title }}</a>
+											</h5>
+										</div>
+									
+									</div>
+
+									<div class="post-cont">
+										<p>{{ question.question_text|truncatechars:300|slice:"-4" }}....</p>
+									</div>
+
+								
+
+								</div>
+							</div>
+                            {% endfor %}
+
+
+
+
+                          
+                          
+
+
+
+
+
+
+
+
+
+
+
+
+							<div class="pagination">
+								<ul>
+									<li>
+										<a href="#0">First</a>
+									</li>
+									<li>
+										<a href="#0">1</a>
+									</li>
+									<li>
+										<a href="#0">2</a>
+									</li>
+									<li>
+										<a href="#0">last</a>
+									</li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col-md-4">
+						<div class="side-bar">
+							<div class="widget search">
+								<form>
+									<input type="search" name="" placeholder="Type here ...">
+									<button type="submite"><i class="fa fa-search" aria-hidden="true"></i></button>
+								</form>
+							</div>
+
+							<div class="widget">
+								<div class="widget-title">
+									<h6>Poser une question</h6>
+								</div>
+								<ul>
+									<li><a href="{% url 'ask_question' %}">Poser une question</a></li>
+								</ul>
+							</div>
+
+							<div class="widget">
+								<div class="widget-title">
+									<h6>Les questions les plus récemment </h6>
+								</div>
+								<ul>
+									{% for question in questions %}
+									<li><a href="/question/{{ question.qid }}/{{ question.slug }}">{{ question.question_title }}</a></li>
+									
+								    {% endfor %}
+								</ul>
+								
+							
+							</div>
+
+					
+					
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<!--====== End Blog ======-->
+
+
+
+
+		<!-- =====================================
+        ==== Start Footer -->
+
+        <footer class="text-center">
+            <div class="container">
+
+
+				<p>&copy; 2020 ERPI Laboratory. All Rights Reserved.</p>
+				<p>CAPteurs intelligents pour la transformation des MATériaux (des ressources aux produits : CAP-MAT" est cofinancé par l'union européenne dans le cadre opérationnel FEDER-FSE Lorraine et Massif des Vosges 2014-2020</p>
+
+            </div>
+        </footer>
+
+        <!-- End Footer ====
+        ======================================= -->
+
+
+
+       
+        <!-- jQuery -->
+		<script src="{% static 'acro/js/jquery-3.0.0.min.js' %}"></script>
+		<script src="{% static 'acro/js/jquery-migrate-3.0.0.min.js' %}"></script>
+
+		<!-- popper.min -->
+		<script src="{% static 'acro/js/popper.min.js' %}"></script>
+
+	  	<!-- bootstrap -->
+		<script src="{% static  'acro/js/bootstrap.min.js' %}"></script>
+
+		<!-- scrollIt -->
+		<script src="{% static  'acro/js/scrollIt.min.js' %}"></script>
+
+		<!-- animated.headline -->
+		<script src="{% static  'acro/js/animated.headline.js' %}"></script>
+
+		<!-- jquery.waypoints.min -->
+		<script src="{% static  'acro/js/jquery.waypoints.min.js' %}"></script>
+
+		<!-- jquery.counterup.min -->
+		<script src="{% static  'acro/js/jquery.counterup.min.js' %}"></script>
+
+		<!-- owl carousel -->
+		<script src="{% static  'acro/js/owl.carousel.min.js' %}"></script>
+
+		<!-- jquery.magnific-popup js -->
+		<script src="{% static  'acro/js/jquery.magnific-popup.min.js' %}"></script>
+
+		<!-- stellar js -->
+		<script src="{% static  'acro/js/jquery.stellar.min.js' %}"></script>
+
+      	<!-- isotope.pkgd.min js -->
+      	<script src="{% static  'acro/js/isotope.pkgd.min.js' %}"></script>
+
+        <!-- YouTubePopUp.jquery -->
+        <script src="{% static  'acro/js/YouTubePopUp.jquery.js' %}"></script>
+
+      	<!-- validator js -->
+      	<script src="{% static  'acro/js/validator.js' %}"></script>
+
+      	<!-- custom scripts -->
+        <script src="{% static  'acro/js/scripts.js' %}"></script>
+
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

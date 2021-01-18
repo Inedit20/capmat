@@ -1,0 +1,2818 @@
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										{{ p_form.laboratoire|as_crispy_field:"bootstrap" }}
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										
+								{{ p_form.universite|as_crispy_field:"bootstrap" }}
+									</div>
+								</div>
+
+
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										<div class="form-select">{{ p_form.domaine|as_crispy_field:"bootstrap" }}</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										
+										<div class="form-select">	{{ p_form.fonction|as_crispy_field:"bootstrap" }}</div>
+									</div>
+								</div>
+
+
+                                  
+								
+
+								<div class="form-group mt-3">
+									<div class="col-12">
+										<div class="form-group">
+
+											
+						<div>{{ p_form.presentation|as_crispy_field:"bootstrap" }}
+							{{p_form.media}}</div>	
+										</div>
+									</div>
+						
+	
+									<div class="col-12">
+										<div class="form-group">
+							{{ p_form.mots_cles|as_crispy_field:"bootstrap" }}
+												{{p_form.media}}</textarea>
+										</div>
+									</div>
+						
+	
+	
+	
+	
+									<div class="col-12">
+										<div class="form-group">
+							{{ p_form.link|as_crispy_field:"bootstrap" }}
+												{{p_form.media}}</textarea>
+										</div>
+									</div>
+	
+	
+								</div>
+
+
+
+
+
+
+
+
+                                {% load static %}
+                                {% load crispy_forms_tags %}
+                                <!DOCTYPE html>
+                                <html lang="en">
+                                  <head>
+                                    <meta charset="utf-8">
+                                    <meta http-equiv="x-ua-compatible" content="ie=edge">
+                                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                    <title>{% block title %}CapMat{% endblock title %}</title>
+                                    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+                                    <meta name="description" content="An enterprise Social Network">
+                                    <meta name="author" content="Sebastian Reyes">
+                                    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+                                    <!--[if lt IE 9]>
+                                      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+                                    <![endif]-->
+                                    {% block css %}
+                                    <!-- Latest compiled and minified Bootstrap 4 beta CSS -->
+                                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                                    <!-- Your stuff: Third-party CSS libraries go here -->
+                                    <link rel="stylesheet" type="text/css" href="{% static 'boot/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+                                    <!-- This file stores project-specific CSS -->
+                                    <link href="{% static 'boot/css/bootcamp.css' %}?v=1" rel="stylesheet">
+                                    <link rel="stylesheet" href="{% static 'template/assets/css/main.css' %}" />
+                                         <!-- Google Fonts -->
+                                         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+                                         <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800" rel="stylesheet">
+                                         <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" rel="stylesheet">
+                                 
+                                         <!-- Plugins -->
+                                         <link rel="stylesheet" href="{% static 'acro/css/plugins.css' %}" />
+                                 
+                                         <!-- Core Style Css -->
+                                         <link rel="stylesheet" href="{% static 'acro/css/style.css'%}" />
+                                         
+                                    {% endblock css %}
+                                    {% block head %}{% endblock head %}
+                                    
+                                <style>
+                                
+                                
+                                .notification {
+                                  position: relative;
+                                  width: 2em;
+                                  height: 2em;
+                                }
+                                .notification svg {
+                                  width: 2em;
+                                  height: 2em;
+                                }
+                                .notification svg > path {
+                                  fill: #FFFFFF;
+                                }
+                                .notification--bell {
+                                  animation: bell 2.2s linear infinite;
+                                  transform-origin: 50% 0%;
+                                }
+                                 .notification--bellClapper {
+                                  animation: bellClapper 2.2s 0.1s linear infinite;
+                                }
+                                .notification--num {
+                                  position: absolute;
+                                  top: 0%;
+                                  left: 60%;
+                                  font-size: 1rem;
+                                  border-radius: 50%;
+                                  width: 1.75em;
+                                  height: 1.75em;
+                                  background-color: #FF4C13;
+                                  
+                                  color: #FFFFFF;
+                                  text-align: center;
+                                  line-height: 1.7em;
+                                  animation: notification 3.2s ease;
+                                }
+                                
+                                @keyframes bell {
+                                  0%, 25%, 75%, 100% {
+                                    transform: rotate(0deg);
+                                  }
+                                  40% {
+                                    transform: rotate(2deg);
+                                  }
+                                  45% {
+                                    transform: rotate(-2deg);
+                                  }
+                                  55% {
+                                    transform: rotate(1deg);
+                                  }
+                                  60% {
+                                    transform: rotate(-1deg);
+                                  }
+                                }
+                                @keyframes bellClapper {
+                                  0%, 25%, 75%, 100% {
+                                    transform: translateX(0);
+                                  }
+                                  40% {
+                                    transform: translateX(-0.15em);
+                                  }
+                                  45% {
+                                    transform: translateX(0.15em);
+                                  }
+                                  55% {
+                                    transform: translateX(-0.1em);
+                                  }
+                                  60% {
+                                    transform: translateX(0.1em);
+                                  }
+                                }
+                                @keyframes notification {
+                                  0%, 25%, 75%, 100% {
+                                    opacity: 1;
+                                  }
+                                  30%, 70% {
+                                    opacity: 0;
+                                  }
+                                }
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                </style>
+                                  </head>
+                                  <body>
+                                    {% block body %}
+                                  
+                                
+                                
+                                      
+                                      
+                                    {% load notifications_tags %}
+                                        {% notifications_unread as unread_count %}
+                                    
+                                
+                                        <nav class="navbar navbar-expand-lg " style="background-color:rgb(53, 49, 49)">
+                                            <div class="container">
+                                    
+                                            <!-- Logo -->
+                                            <h5 style="color: #FFFFFF;">
+                                                <a  href="{% url 'students:first_page' %}">Cap-Mat  </a>     
+                                            </h5>
+                                    
+                                              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                                <span class="icon-bar"><i class="fas fa-bars"></i></span>
+                                              </button>
+                                    
+                                              <!-- navbar links -->
+                                              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                                <ul class="navbar-nav ml-auto">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="{% url 'students:first_page' %}" >Accueil</a>
+                                                    
+                                                      </li>
+                                                
+                                                      <li class="nav-item dropdown">
+                                                        <a class="nav-link dropdown-toggle" href="{% url 'students:collaborations' %}"  data-scroll-nav="2" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                     
+                                                          Mes Projets
+                                                        </a>
+                                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                          <a class="dropdown-item"   href="{% url 'students:lanceur_projet_home' %}">Créer un nouveau projet</a>
+                                                          <div class="dropdown-divider"></div>
+                                                          <a class="dropdown-item" href="{% url 'students:mes_projets' %}">La liste de mes projets</a>
+                                                        </div>
+                                                      </li>
+                                
+                                                      <li class="nav-item dropdown">
+                                                        <a class="nav-link dropdown-toggle" href="{% url 'students:collaborations' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                     
+                                                        Mes Collaborations
+                                                        </a>
+                                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                          <a class="dropdown-item" href="{% url 'students:list_actuelle' %}">Collaborations actuelles</a>
+                                                          <div class="dropdown-divider"></div>
+                                                          <a class="dropdown-item" href="{% url 'students:list_potentielle' %}">Collaborations potentielles</a>
+                                                        </div>
+                                                      </li>
+                                    
+                                                      <li class="nav-item dropdown">
+                                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                     
+                                                        <span> Mes Technologies </span>
+                                                        </a>
+                                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                          <a class="dropdown-item" href="{% url 'students:MesTechnologies_list' %}">La Banque de Technologies </a>
+                                                          <div class="dropdown-divider"></div>
+                                                          <a class="dropdown-item" href="{% url 'students:capteur_home' %}">Mes Technologies </a>
+                                                        </div>
+                                                      </li>
+                                    
+                                                      <li class="nav-item dropdown">
+                                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                     
+                                                          Experts
+                                                        </a>
+                                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                          <a class="dropdown-item" href="{% url 'students:liste' %}">Mes Experts</a>
+                                                          <div class="dropdown-divider"></div>
+                                                          <a class="dropdown-item" href="{% url 'students:Annuaire' %}">Annuaire des experts</a>
+                                                        </div>
+                                                      </li>
+                                    
+                                                  <li class="nav-item"><a class="nav-link" href="{% url 'notice:inbox' %}"> Inbox 	{% if unread_count %}
+                                                    <span class="badge badge-danger" >{{ unread_count }}</span>
+                                                    {% endif %}</a></li>
+                                        
+                                    
+                                
+                                                    <li class="nav-item dropdown">
+                                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      
+                                                          {{ request.user.username }}
+                                                        </a>
+                                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                          <a class="dropdown-item" href="{% url 'students:profile' %}"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>&nbsp; Mon Profil</a>
+                                                          <div class="dropdown-divider"></div>
+                                                          <a class="dropdown-item" href="{% url 'logout' %}"> Se déconnecter </a>
+                                                        </div>
+                                                      </li>
+                                      
+                                      
+                                    
+                                      
+                                                      <li class="nav-item dropdown">
+                                                      
+                                                          <div class="notification">
+                                                              <svg viewbox="0 0 166 197">
+                                                                <path d="M82.8652955,196.898522 C97.8853137,196.898522 110.154225,184.733014 110.154225,169.792619 L55.4909279,169.792619 C55.4909279,184.733014 67.8452774,196.898522 82.8652955,196.898522 L82.8652955,196.898522 Z" class="notification--bellClapper"></path>
+                                                              <path d="M146.189736,135.093562 L146.189736,82.040478 C146.189736,52.1121695 125.723173,27.9861651 97.4598237,21.2550099 L97.4598237,14.4635396 C97.4598237,6.74321823 90.6498186,0 82.8530327,0 C75.0440643,0 68.2462416,6.74321823 68.2462416,14.4635396 L68.2462416,21.2550099 C39.9707102,27.9861651 19.5163297,52.1121695 19.5163297,82.040478 L19.5163297,135.093562 L0,154.418491 L0,164.080956 L165.706065,164.080956 L165.706065,154.418491 L146.189736,135.093562 Z" class="notification--bell"></path>
+                                                              </svg>
+                                                              {% if unread_count %}
+                                                            <span><a  class="notification--num"href="{% url 'notice:list' %}" >{{ unread_count }}</a></span>  
+                                                              {% endif %}
+                                                            </div>
+                                                        </li>
+                                    
+                                
+                                                </ul>
+                                              </div>
+                                            </div>
+                                        </nav>
+                                    
+                                     
+                                             <!-- =====================================
+                                             ==== Start Services -->
+                                     
+                                             <section class="contact section-padding" data-scroll-index="2">
+                                                 <div class="container">
+                                                     <div class="row">
+                                     
+                                                    
+                                                         
+                                                    
+                                     
+                                                         
+                                                        
+                                                    
+                                     
+                                                         <div class="col-lg-12">
+                                                        
+                                          <form method="POST" class="post-form" enctype="multipart/form-data">
+                                          
+                                            {% csrf_token %}
+                                             
+                                              
+                                              
+                                              
+                                          
+                                          
+                                              <ul>				
+                                    
+                                                  
+                                                          
+                                                  </ul>
+                                
+                                <a href="#deux" class="nav-link">Suivant >>></a>
+                                
+                                                         </div>
+                                     
+                                                     </div>
+                                                 </div>
+                                             </section>
+                                     
+                                
+                                    
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <section id="trois" class="wrapper style3">
+                                            <div class="inner">
+                                
+                                
+                                                
+                                 
+                                                <header class="align-center">
+                                                    <div class="section-head text-center col-sm-12">
+                                                        <h4>Précisions techniques sur le projet</h4>
+                                                        <h6> (facultatif)</h6>
+                                                    </div>
+                                            
+                                                </header>
+                                
+                                        
+                                                
+                                        <ul>				
+                                        <h1>{{ form.sensibilite|as_crispy_field }}</h1>
+                                        <h1>{{ form.stabilite|as_crispy_field }}</h1>
+                                          
+                                            <h1>{{ form.selectivite|as_crispy_field }}</h1>
+                                       
+                                                <h1>{{ form.precision|as_crispy_field }}</h1>
+                                        
+                                                
+                                        
+                                                        
+                                                            <h1>{{ form.condition_ambiante|as_crispy_field }}</h1>
+                                                            
+                                        </ul>
+                                
+                                            </div>
+                                </section>
+                                
+                                
+                                <section id="trois" class="wrapper style3" >
+                                    <div class="inner">
+                                        <header class="align-center">
+                                            <div class="section-head text-center col-sm-12">
+                                                <h4>Ajouter une Equipe</h4>
+                                                <h6> (facultatif)</h6>
+                                            </div>
+                                    
+                                        </header>
+                                
+                                        
+                                <ul>				
+                                
+                                
+                                </ul>
+                                
+                                    </div>
+                                </section>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <section class="services section-padding"  id="deux" data-scroll-index="2">
+                                    <div class="container">
+                                        <div class="row">
+                                
+                                            <div class="section-head text-center col-sm-12">
+                                                <h4>Validation de votre formulaire</h4>
+                                                <h6>Vous pouvez ajouter des fichiers associés à votre projet. (Photos, vidéos, documents...).</h6>
+                                            </div>
+                                            
+                                       
+                                
+                                       
+                                       
+                                
+                                            <div class="col-lg-12" style="text-align: center;">
+                                           
+                                
+                                 
+                                 
+                                                <ul>				
+                                                    <li><a>{{ form.file_1|as_crispy_field }}</a></li>
+                                                    <li><a>{{ form.file_2|as_crispy_field }}</a></li>
+                                                
+                                                    <li><h1 style="color: black;">{{ form.confidentalite|as_crispy_field }}</h1></li>
+                                                    
+                                                    </ul>
+                                       
+                                    
+                                
+                                              <button type="submit" class="button alt">Sauvegarder</button>
+                                     
+                                
+                                            </div>
+                                
+                                        </div>
+                                    </div>
+                                </section>
+                                
+                                
+                                
+                                
+                                
+                                             
+                                             <!-- End Services ====
+                                             ======================================= -->
+                                     
+                                
+                                     
+                                             <!-- =====================================
+                                             ==== Start Works -->
+                                    
+                                             <!-- End Works ====
+                                             ======================================= -->
+                                     
+                                
+                                     
+                                     
+                                
+                                             <footer class="text-center">
+                                                 <div class="container">
+                                     
+                                                    
+                                                     <p>&copy; copyright: 2020 <a href="https://templated.co/">ERPI (Research team on innovation process).</a></p>
+                                     
+                                                 </div>
+                                             </footer>
+                                     
+                                             <!-- End Footer ====
+                                             ======================================= -->
+                                     
+                                     
+                                     
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                      <!-- /container -->
+                                
+                                      <!-- Le javascript
+                                      ================================================== -->
+                                      <!-- Placed at the end of the document so the pages load faster -->
+                                      {% block javascript %}
+                                        <!-- Required by Bootstrap v4 -->
+                                       
+                                             <script src="{% static 'acro/js/jquery-3.0.0.min.js' %}"></script>
+                                        <script src="{% static 'acro/js/jquery-migrate-3.0.0.min.js' %}"></script>
+                                
+                                        <!-- popper.min -->
+                                        <script src="{% static 'acro/js/popper.min.js' %}"></script>
+                                
+                                        <!-- bootstrap -->
+                                        <script src="{% static 'acro/js/bootstrap.min.js' %}"></script>
+                                
+                                        <!-- scrollIt -->
+                                        <script src="{% static 'acro/js/scrollIt.min.js' %}"></script>
+                                
+                                        <!-- jquery.waypoints.min -->
+                                        <script src="{% static 'acro/js/jquery.waypoints.min.js' %}"></script>
+                                
+                                        <!-- jquery.counterup.min -->
+                                        <script src="{% static 'acro/js/jquery.counterup.min.js' %}"></script>
+                                
+                                        <!-- owl carousel -->
+                                        <script src="{% static 'acro/js/owl.carousel.min.js' %}"></script>
+                                
+                                        <!-- jquery.magnific-popup js -->
+                                        <script src="{% static 'acro/js/jquery.magnific-popup.min.js' %}"></script>
+                                
+                                        <!-- stellar js -->
+                                        <script src="{% static 'acro/js/jquery.stellar.min.js' %}"></script>
+                                
+                                        <!-- isotope.pkgd.min js -->
+                                        <script src="{% static 'acro/js/isotope.pkgd.min.js' %}"></script>
+                                
+                                        <!-- YouTubePopUp.jquery -->
+                                        <script src="{% static 'acro/js/YouTubePopUp.jquery.js' %}"></script>
+                                
+                                
+                                        <!-- validator js -->
+                                        <script src="{% static 'acro/js/validator.js' %}"></script>
+                                
+                                        <!-- custom scripts -->
+                                        <script src="{% static 'acro/js/scripts.js' %}"></script>
+                                
+                                    
+                                
+                                        
+                                        
+                                    
+                                      {% endblock javascript %}
+                                
+                                      {% block modal %}{% endblock modal %}
+                                
+                                    {% endblock body %}
+                                  </body>
+                                
+                                  <!-- /.container -->
+                                </html>
+                                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Collaboration 
+
+
+
+{% load i18n %}
+{% trans alert %}
+
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>CAP-MAT </title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+
+ <!-- CSS here -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+	 
+		
+		<style>
+
+
+			.notification {
+			  position: relative;
+			  width: 2em;
+			  height: 2em;
+			}
+			.notification svg {
+			  width: 2em;
+			  height: 2em;
+			}
+			.notification svg > path {
+			  fill: #FFFFFF;
+			}
+			.notification--bell {
+			  animation: bell 2.2s linear infinite;
+			  transform-origin: 50% 0%;
+			}
+			 .notification--bellClapper {
+			  animation: bellClapper 2.2s 0.1s linear infinite;
+			}
+			.notification--num {
+			  position: absolute;
+			  top: 0%;
+			  left: 60%;
+			  font-size: 1rem;
+			  border-radius: 50%;
+			  width: 1.75em;
+			  height: 1.75em;
+			  background-color: #FF4C13;
+			  
+			  color: #FFFFFF;
+			  text-align: center;
+			  line-height: 1.7em;
+			  animation: notification 3.2s ease;
+			}
+			
+			@keyframes bell {
+			  0%, 25%, 75%, 100% {
+				transform: rotate(0deg);
+			  }
+			  40% {
+				transform: rotate(2deg);
+			  }
+			  45% {
+				transform: rotate(-2deg);
+			  }
+			  55% {
+				transform: rotate(1deg);
+			  }
+			  60% {
+				transform: rotate(-1deg);
+			  }
+			}
+			@keyframes bellClapper {
+			  0%, 25%, 75%, 100% {
+				transform: translateX(0);
+			  }
+			  40% {
+				transform: translateX(-0.15em);
+			  }
+			  45% {
+				transform: translateX(0.15em);
+			  }
+			  55% {
+				transform: translateX(-0.1em);
+			  }
+			  60% {
+				transform: translateX(0.1em);
+			  }
+			}
+			@keyframes notification {
+			  0%, 25%, 75%, 100% {
+				opacity: 1;
+			  }
+			  30%, 70% {
+				opacity: 0;
+			  }
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+	<!-- Header Start -->
+    <div class="header-area header_area header-transparent">
+            <div class="main-header">
+            <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+							<!-- Logo -->
+							
+
+
+
+
+
+
+
+
+
+
+							<div class="col-xl-2 col-lg-1 col-md-1">
+                                <div class="logo">
+                                <a href="index.html"><img src="{% static 'assets/img/logo/Inedit.jpg' %}" alt="CAP-MAT"></a>
+                                </div>
+                            </div>
+                        
+                            <div class="col-xl-8 col-lg-8 col-md-8">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+
+
+
+
+													{% load notifications_tags %}
+													{% notifications_unread as unread_count %}
+												
+
+
+                                    <nav> 
+                                        <ul id="navigation">                                                                                                                                     
+                                            <li><a href="{% url 'students:first_page' %}">{% trans 'Accueil' %}</a></li>
+                                          
+                                        
+											
+											<li><a href="blog.html">Mes Projets</a>
+                                                <ul class="submenu">
+                                                    <li><a href="{% url 'students:lanceur_projet_home' %}">{% trans 'Nouveau projet'%}</a></li>
+                                                    <li><a href="{% url 'students:mes_projets' %}">{% trans 'Liste des projets'%}</a></li>
+                                                </ul>
+                                            </li>
+
+                                            <li><a href="#">Mes Collaborations</a>
+                                                <ul class="submenu">
+													<li><a href="{% url 'students:list_actuelle' %}">Collaborations actuelles</a></li>
+													<li><a href="{% url 'students:list_potentielle' %}">Collaborations potentielles</a></li>
+                                                </ul>
+											</li>
+											
+
+											<li><a href="#">Mes Collaborations</a>
+                                                <ul class="submenu">
+													<li><a href="{% url 'students:list_actuelle' %}">Collaborations actuelles</a></li>
+													<li><a href="{% url 'students:list_potentielle' %}">Collaborations potentielles</a></li>
+                                                </ul>
+											</li>
+										
+											<li><a   href="{% url 'notice:inbox' %}">	<i class="fas fa-envelope fa-2x"></i> {% if unread_count %} {% endif %}</a></li>
+                                          
+										
+												<li><a href="#">	<i class="far fa-address-card fa-2x"></i></a>
+													<ul class="submenu">
+													
+														<li><a href="{% url 'students:profile' %}">Mon Profile</a></li>
+														
+														<li><a href="{% url 'students:profile' %}">{{ request.user.username }}</a></li>
+														<li><a href="{% url 'notice:inbox' %}"> Inbox {% if unread_count %} </span>{% endif %}</a></li>
+														<li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+													</ul>
+												</li>
+
+												
+											
+	
+												
+
+
+											
+
+
+												
+								
+
+
+
+                                           
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>             
+                            <div class="col-xl-2 col-lg-3 col-md-3">
+                                <div class="header-right-btn f-right d-none d-lg-block">
+									
+										<div class="notification">
+											<svg viewbox="0 0 166 197">
+											  <path d="M82.8652955,196.898522 C97.8853137,196.898522 110.154225,184.733014 110.154225,169.792619 L55.4909279,169.792619 C55.4909279,184.733014 67.8452774,196.898522 82.8652955,196.898522 L82.8652955,196.898522 Z" class="notification--bellClapper"></path>
+											<path d="M146.189736,135.093562 L146.189736,82.040478 C146.189736,52.1121695 125.723173,27.9861651 97.4598237,21.2550099 L97.4598237,14.4635396 C97.4598237,6.74321823 90.6498186,0 82.8530327,0 C75.0440643,0 68.2462416,6.74321823 68.2462416,14.4635396 L68.2462416,21.2550099 C39.9707102,27.9861651 19.5163297,52.1121695 19.5163297,82.040478 L19.5163297,135.093562 L0,154.418491 L0,164.080956 L165.706065,164.080956 L165.706065,154.418491 L146.189736,135.093562 Z" class="notification--bell"></path>
+											</svg>
+											{% if unread_count %}
+										  <span><a  class="notification--num"href="{% url 'notice:list' %}" >{{ unread_count }}</a></span>  
+											{% endif %}
+										  </div>
+										
+									
+                                </div>
+                            </div>
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </div>
+    </div>
+	<!-- Header End -->
+    </header>
+	<main>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+           <!--All startups Start -->
+		   <section class="all-starups-area section-padding2">
+            
+            <!-- left Contents -->
+            <div class="starups">
+                <div class="starups-details">
+                    <!-- Section Tittle -->
+
+                    <div class="section-tittle section-tittle3">
+                       
+                        <h2>Chaine de Connaissances</h2>
+                    </div>
+                    <!-- details caption -->
+                    <div class="details-caption">
+                        <p>Cnsectetur adipisicing cvbelit, sxced dbeo eiucdsmod tempor incididunt ut labore egsfgt dolore magna aliqua. Ut encim ad minim veniam, quis nostrud exercitation ulclamco laboris nisi ufgut aliquip edgx ebrha.</p>
+                        <p>Cnsectetur adipisicing cvbelit, sxced dbeo eiucdsmod tempor incididunt ut labore egsfgt folorem.</p>
+                    </div>
+					<div><a href="#1" class="btn">get started</a>
+						<a href="#1" class="btn">Back</a></div>
+                </div>
+            </div>
+            <!--Right Contents  -->
+            <div class="starups-img">
+                <img  style="width: 80%;
+                height: 80%;" src="{% static 'assets/img/gallery/Image3.png' %}" alt="">
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<section class="search-domain-area section-bg pt-140 pb-140" data-background="{% static 'assets/img/gallery/section_bg02.jpg' %}">
+		<div class="container">
+			<div class="row align-items-end mb-80">
+				<div class="col-xl-8">
+					<!-- Section Tittle -->
+					<div class="section-tittle section-tittle2">
+						<span>Get your domain</span>
+						<h2>Search domain you want</h2>
+					</div>
+				</div>
+	
+			</div>
+
+			<div class="row">
+				<div class="domain-list">
+					<div  style="justify-content: center;">
+						
+						<a href="#" style="background-color: rgb(255, 116, 116)" class="genric-btn default circle">Montage des projets</a>
+					</div>
+					<div >
+						<a href="#" style="background-color:rgb(255, 221, 116)" class="genric-btn default circle">Substrats/Matériaux</a>
+					</div>
+					<div >
+						<a href="#" style="background-color: rgb(116, 255, 159)" class="genric-btn default circle">Système de détection</a>
+					</div>
+					<div >
+						<a href="#" style="background-color: rgb(116, 139, 255)" class="genric-btn default circle">Système de protection</a>
+					</div>
+					<div >
+						<a href="#" style="background-color: rgb(240, 116, 255)" class="genric-btn default circle">Système de traitement des données</a>
+					</div>
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="domain-list">
+					<div class="single-domain">
+						<span>.com</span>
+						<p>$3.99/Year</p>
+					</div>
+					<div class="single-domain">
+						<span>.net</span>
+						<p>$2.99/Year</p>
+					</div>
+					<div class="single-domain">
+						<span>.com</span>
+						<p>$3.99/Year</p>
+					</div>
+					<div class="single-domain">
+						<span>.co</span>
+						<p>$5.99/Year</p>
+					</div>
+					<div class="single-domain">
+						<span>.org</span>
+						<p>$2.99/Year</p>
+					</div>
+					<div class="single-domain">
+						<span>.live</span>
+						<p>$1.99/Year</p>
+					</div>
+				</div>
+			</div>
+		
+
+		</div>
+		<!-- Domain List -->
+	
+
+
+
+
+
+
+
+
+
+
+
+			
+			<!-- Domain List  End-->
+		</div>
+	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+	</main>
+    <footer>
+        <!-- Footer Start-->
+        <div class="footer-area">
+            <div class="container">
+               <div class="footer-top footer-padding">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="single-footer-caption mb-30">
+                                    <!-- logo -->
+                                    <div class="footer-logo">
+                                        <a href="index.html"><img src="{% static 'assets/img/logo/logo2_footer.png' %}" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>All packages</h4>
+                                    <ul>
+                                        <li><a href="#">Package-1</a></li>
+                                        <li><a href="#">Package-2</a></li>
+                                        <li><a href="#">Package-3</a></li>
+                                        <li><a href="#">Custome</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Quick Link</h4>
+                                    <ul>
+                                        <li><a href="#">Contact Us</a></li>
+                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="#">News & Articles</a></li>
+                                        <li><a href="#">Privacy Policy</a></li>     
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>+1 514 648 256</h4>
+                                    <ul>
+                                        <li><a href="#">youremail@gmail.com</a></li>
+                                    </ul>
+                                    <p>123 East 26th Street, Fifth Floor, New York, NY 10011</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+                <div class="footer-bottom">
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-xl-9 col-lg-9 ">
+                            <div class="footer-copy-right">
+                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3">
+                            <!-- Footer Social -->
+                            <div class="footer-social f-right">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-globe"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+        <!-- Footer End-->
+    </footer>
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+
+<!-- JS here -->
+	
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+        <script src="{% static 'assets/js/popper.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{% static 'assets/js/jquery.slicknav.min.js' %}"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'assets/js/slick.min.js' %}"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{% static 'assets/js/wow.min.js' %}"></script>
+		<script src="{% static 'assets/js/animated.headline.js' %}"></script>
+		<script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
+		
+		<!-- Nice-select, sticky -->
+        <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+		<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+        
+        <!-- contact js -->
+        <script src="{% static 'assets/js/contact.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.form.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'assets/js/mail-script.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="{% static 'assets/js/plugins.js' %}"></script>
+		<script src="{% static 'assets/js/main.js' %}"></script>
+		
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% load i18n %}
+{% trans alert %}
+
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>CAP-MAT </title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+
+ <!-- CSS here -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+	 
+		
+		<style>
+
+
+			.notification {
+			  position: relative;
+			  width: 2em;
+			  height: 2em;
+			}
+			.notification svg {
+			  width: 2em;
+			  height: 2em;
+			}
+			.notification svg > path {
+			  fill: #FFFFFF;
+			}
+			.notification--bell {
+			  animation: bell 2.2s linear infinite;
+			  transform-origin: 50% 0%;
+			}
+			 .notification--bellClapper {
+			  animation: bellClapper 2.2s 0.1s linear infinite;
+			}
+			.notification--num {
+			  position: absolute;
+			  top: 0%;
+			  left: 60%;
+			  font-size: 1rem;
+			  border-radius: 50%;
+			  width: 1.75em;
+			  height: 1.75em;
+			  background-color: #FF4C13;
+			  
+			  color: #FFFFFF;
+			  text-align: center;
+			  line-height: 1.7em;
+			  animation: notification 3.2s ease;
+			}
+			
+			@keyframes bell {
+			  0%, 25%, 75%, 100% {
+				transform: rotate(0deg);
+			  }
+			  40% {
+				transform: rotate(2deg);
+			  }
+			  45% {
+				transform: rotate(-2deg);
+			  }
+			  55% {
+				transform: rotate(1deg);
+			  }
+			  60% {
+				transform: rotate(-1deg);
+			  }
+			}
+			@keyframes bellClapper {
+			  0%, 25%, 75%, 100% {
+				transform: translateX(0);
+			  }
+			  40% {
+				transform: translateX(-0.15em);
+			  }
+			  45% {
+				transform: translateX(0.15em);
+			  }
+			  55% {
+				transform: translateX(-0.1em);
+			  }
+			  60% {
+				transform: translateX(0.1em);
+			  }
+			}
+			@keyframes notification {
+			  0%, 25%, 75%, 100% {
+				opacity: 1;
+			  }
+			  30%, 70% {
+				opacity: 0;
+			  }
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+	<!-- Header Start -->
+    <div class="header-area header_area header-transparent">
+            <div class="main-header">
+            <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+							<!-- Logo -->
+							
+
+
+
+
+
+
+
+
+
+
+							<div class="col-xl-2 col-lg-1 col-md-1">
+                                <div class="logo">
+                                <a href="index.html"><img src="{% static 'assets/img/logo/Inedit.jpg' %}" alt="CAP-MAT"></a>
+                                </div>
+                            </div>
+                        
+                            <div class="col-xl-8 col-lg-8 col-md-8">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+
+
+
+
+													{% load notifications_tags %}
+													{% notifications_unread as unread_count %}
+												
+
+
+                                    <nav> 
+                                        <ul id="navigation">                                                                                                                                     
+                                            <li><a href="{% url 'students:first_page' %}">{% trans 'Accueil' %}</a></li>
+                                          
+                                        
+											
+											<li><a href="blog.html">Mes Projets</a>
+                                                <ul class="submenu">
+                                                    <li><a href="{% url 'students:lanceur_projet_home' %}">{% trans 'Nouveau projet'%}</a></li>
+                                                    <li><a href="{% url 'students:mes_projets' %}">{% trans 'Liste des projets'%}</a></li>
+                                                </ul>
+                                            </li>
+
+                                            <li><a href="#">Mes Collaborations</a>
+                                                <ul class="submenu">
+													<li><a href="{% url 'students:list_actuelle' %}">Collaborations actuelles</a></li>
+													<li><a href="{% url 'students:list_potentielle' %}">Collaborations potentielles</a></li>
+                                                </ul>
+											</li>
+											
+
+											<li><a href="#">Mes Collaborations</a>
+                                                <ul class="submenu">
+													<li><a href="{% url 'students:list_actuelle' %}">Collaborations actuelles</a></li>
+													<li><a href="{% url 'students:list_potentielle' %}">Collaborations potentielles</a></li>
+                                                </ul>
+											</li>
+										
+											<li><a   href="{% url 'notice:inbox' %}">	<i class="fas fa-envelope fa-2x"></i> {% if unread_count %} {% endif %}</a></li>
+                                          
+										
+												<li><a href="#">	<i class="far fa-address-card fa-2x"></i></a>
+													<ul class="submenu">
+													
+														<li><a href="{% url 'students:profile' %}">Mon Profile</a></li>
+														
+														<li><a href="{% url 'students:profile' %}">{{ request.user.username }}</a></li>
+														<li><a href="{% url 'notice:inbox' %}"> Inbox {% if unread_count %} </span>{% endif %}</a></li>
+														<li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+													</ul>
+												</li>
+
+												
+											
+	
+												
+
+
+											
+
+
+												
+								
+
+
+
+                                           
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>             
+                            <div class="col-xl-2 col-lg-3 col-md-3">
+                                <div class="header-right-btn f-right d-none d-lg-block">
+									
+										<div class="notification">
+											<svg viewbox="0 0 166 197">
+											  <path d="M82.8652955,196.898522 C97.8853137,196.898522 110.154225,184.733014 110.154225,169.792619 L55.4909279,169.792619 C55.4909279,184.733014 67.8452774,196.898522 82.8652955,196.898522 L82.8652955,196.898522 Z" class="notification--bellClapper"></path>
+											<path d="M146.189736,135.093562 L146.189736,82.040478 C146.189736,52.1121695 125.723173,27.9861651 97.4598237,21.2550099 L97.4598237,14.4635396 C97.4598237,6.74321823 90.6498186,0 82.8530327,0 C75.0440643,0 68.2462416,6.74321823 68.2462416,14.4635396 L68.2462416,21.2550099 C39.9707102,27.9861651 19.5163297,52.1121695 19.5163297,82.040478 L19.5163297,135.093562 L0,154.418491 L0,164.080956 L165.706065,164.080956 L165.706065,154.418491 L146.189736,135.093562 Z" class="notification--bell"></path>
+											</svg>
+											{% if unread_count %}
+										  <span><a  class="notification--num"href="{% url 'notice:list' %}" >{{ unread_count }}</a></span>  
+											{% endif %}
+										  </div>
+										
+									
+                                </div>
+                            </div>
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </div>
+    </div>
+	<!-- Header End -->
+    </header>
+	<main>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!----------------------------------->
+
+<section class="search-domain-area section-bg pt-140 pb-140" data-background="{% static 'assets/img/gallery/section_bg02.jpg' %}">
+  <div class="container">
+    <div class="row align-items-end mb-80">
+      <div class="col-xl-8">
+        <!-- Section Tittle -->
+        <div class="section-tittle section-tittle2">
+          
+          <h2>  Chercher des Experts pour le projet {{ projet.titre_projet}}</h2>
+          <span>Chaine de connaissances</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="domain-list">
+        <div  style="justify-content: center;">
+          
+          <a href="#" style="background-color: rgb(255, 116, 116)" class="genric-btn default circle">Montage des projets</a>
+        </div>
+        <div >
+          <a href="#" style="background-color:rgb(255, 221, 116)" class="genric-btn default circle">Substrats/Matériaux</a>
+        </div>
+        <div >
+          <a href="#" style="background-color: rgb(116, 255, 159)" class="genric-btn default circle">Système de détection</a>
+        </div>
+        <div >
+          <a href="#" style="background-color: rgb(116, 139, 255)" class="genric-btn default circle">Système de protection</a>
+        </div>
+        <div >
+          <a href="#" style="background-color: rgb(240, 116, 255)" class="genric-btn default circle">Système de traitement des données</a>
+        </div>
+
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="domain-list">
+   
+        <div class="single-domain">
+          <span>.01</span>
+          <p>(prochainement)</p>
+        </div>
+
+    
+        <div class="single-domain">
+          <span>.02</span>
+          <p>(prochainement)</p>
+        </div>
+        <div class="single-domain">
+          <span>.03</span>
+          <p>(prochainement)</p>
+        </div>
+        <div class="single-domain">
+          <span>.04</span>
+          <p>(prochainement)</p>
+        </div>
+        <div class="single-domain">
+          <span>.05</span>
+          <p>(prochainement)</p>
+        </div>
+        <div class="single-domain">
+          <span>.06</span>
+          <p>(prochainement)</p>
+        </div>
+      </div>
+              
+      <div style="justify-content: center;">
+        <br>
+      </div>
+    </div>
+  
+    <div class="row" style="justify-content: center;">
+    
+              
+      <div style="justify-content: center;"><a href="#1" class="btn">Chaine de connaissance prposée par CAP-MAT</a>
+
+
+      
+      </div>
+        
+
+
+    </div>
+  </div>
+  <!-- Domain List -->
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <!-- Domain List  End-->
+  </div>
+</section>
+
+
+
+
+
+
+<!----------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+           <!--All startups Start -->
+           <section class="all-starups-area section-padding2">
+
+
+            
+            <!-- left Contents -->
+            <div class="starups">
+              
+           
+                <div class="starups-details">
+                    <!-- Section Tittle -->
+<div >
+  <h2 class="contact-title">Chaine de connaissances proposée par CapMat pour le projet {{quiz.name}}</h2>
+                  
+  <img  style="width: 100%;
+  height: 100%;" src="{% static 'assets/img/gallery/Image3.png' %}" alt="">
+  <br>
+</div>
+                   
+                
+               
+                <div style="justify-content: center;"><a href="#1" class="btn">get started</a>
+                  <a href="#1" class="btn">Back</a> <a href="#1" class="btn">Back</a></div>
+                </div>
+            </div>
+            <!--Right Contents  -->
+          
+
+            <div class="details-caption">
+
+                    
+              <div class="row">
+            
+           
+      
+  
+                <div  class="sa_t_container">
+                  <div   class="sa_t_container-head">
+                    <div style="background-color: rgb(255, 116, 116)" class="sa_t_head">Montage des projets</div>
+                  </div>
+    
+    
+                
+                  <div style="background-color:rgb(255, 255, 255) ;"  class="sa_t_container-txt">
+                    <div class="sa_t_text">
+                   
+                      <ul>
+                      
+                         
+                          {% for quiz in quizzes %}
+                          {% for chaine in quiz.chaine.all %}
+                            {% if chaine.name_chaine == "Montage des projets" %}
+                     
+                          
+                             <li> <a id="myBtn" href="#popup1"  style="color: black;"><i class="fa fa-plus"  class="genric-btn default circle"> {{ quiz.nom}} {{ quiz.prenom}}</i> </a></li>
+                          
+                           
+                          
+                            <div id="popup1" class="overlay">
+                              <div class="popup">
+                                <h2>Here Pop UP</h2>
+                                <a class="close" href="#">×</a>
+                                <div class="content">
+                                  Thank to pop me out of that button, but now i'm done so you can close this window.
+    
+              
+                                  <div class="col-lg-5">
+                                    <div class="hero-img">
+                                      <img src="{{ forum.image.url }}" alt="">
+                                    </div>
+                                  </div>
+                                    
+                                  <div class="col-lg-7">
+                                    <div class="content">
+                                    
+                                      <h4>{{quiz.nom}} {{quiz.prenom}}</h4>
+                                    </br>
+                                      <span>{{ quiz.fonction}}</span>        
+                                      <p>Domaines d'application :  <span>{% for d in quiz.domaine.all %} {{ d.name}}, {% endfor %}</span> </p>
+                                      <p>Disciplines scientifiques : <span>{% for d in quiz.interests.all %} {{ d.name}}, {% endfor %}</span> </p>
+                                      <p>Adresse email de contact : <span>{{quiz.adresse_email}}</span> </p>
+                                      <p>Composante : <span>{{quiz.composante }}</span> </p>                        
+                                    </div>
+                                  </div>
+      
+    
+    
+                                </div>
+                              </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                            
+    
+                          </ul>
+                    </div>
+                  </div>  
+                </div>
+    
+                <div  class="sa_t_container">
+                  <div   class="sa_t_container-head">
+                    <div style="background-color:rgb(255, 221, 116)" class="sa_t_head">Substrats/Matériaux</div>
+                  </div>
+    
+    
+                
+                  <div style="background-color:rgb(255, 255, 255) ;"  class="sa_t_container-txt">
+                    <div class="sa_t_text">
+                   
+                      <ul>
+                      
+                         
+                          {% for quiz in quizzes %}
+                          {% for chaine in quiz.chaine.all %}
+                            {% if chaine.name_chaine == "Substrats/ Matériaux" %}
+                     
+                          
+                             <li> <a id="myBtn" href="#popup1"  style="color: black;"><i class="fas fa-eye"  class="genric-btn default circle"> {{ quiz.nom}} {{ quiz.prenom}}</i> </a></li>
+                          
+                                             
+                            <div id="popup1" class="overlay">
+                              <div class="popup">
+                                <h2>Here Pop UP</h2>
+                                <a class="close" href="#">×</a>
+                                <div class="content">
+                                  Thank to pop me out of that button, but now i'm done so you can close this window.
+    
+              
+                                  <div class="col-lg-5">
+                                    <div class="hero-img">
+                                      <img src="{{ forum.image.url }}" alt="">
+                                    </div>
+                                  </div>
+                                    
+                                  <div class="col-lg-7">
+                                    <div class="content">
+                                    
+                                      <h4>{{quiz.nom}} {{quiz.prenom}}</h4>
+                                    </br>
+                                      <span>{{ quiz.fonction}}</span>        
+                                      <p>Domaines d'application :  <span>{% for d in quiz.domaine.all %} {{ d.name}}, {% endfor %}</span> </p>
+                                      <p>Disciplines scientifiques : <span>{% for d in quiz.interests.all %} {{ d.name}}, {% endfor %}</span> </p>
+                                      <p>Adresse email de contact : <span>{{quiz.adresse_email}}</span> </p>
+                                      <p>Composante : <span>{{quiz.composante }}</span> </p>                        
+                                    </div>
+                                  </div>
+      
+    
+    
+                                </div>
+                              </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                            
+    
+                          </ul>
+                    </div>
+                  </div>  
+                </div>
+    
+    
+                <div  class="sa_t_container">
+                  <div   class="sa_t_container-head">
+                    <div style="background-color: rgb(116, 255, 159)" class="sa_t_head">Système de détection</div>
+                  </div>
+    
+    
+                
+                  <div style="background-color:rgb(255, 255, 255) ;"  class="sa_t_container-txt">
+                    <div class="sa_t_text">
+                   
+                      <ul>
+                      
+                         
+                          {% for quiz in quizzes %}
+                          {% for chaine in quiz.chaine.all %}
+                            {% if chaine.name_chaine == "Système de détection" %}
+                     
+                          
+                             <li> <a id="myBtn" href="#popup1"  style="color: black;"><i class="fas fa-eye"  class="genric-btn default circle"> {{ quiz.nom}} {{ quiz.prenom}}</i> </a></li>
+                          
+                           
+                  
+                          
+    
+                          
+                            <div id="popup1" class="overlay">
+                              <div class="popup">
+                                <h2>Here Pop UP</h2>
+                                <a class="close" href="#">×</a>
+                                <div class="content">
+                                  Thank to pop me out of that button, but now i'm done so you can close this window.
+    
+              
+                                  <div class="col-lg-5">
+                                    <div class="hero-img">
+                                      <img src="{{ forum.image.url }}" alt="">
+                                    </div>
+                                  </div>
+                                    
+                                  <div class="col-lg-7">
+                                    <div class="content">
+                                    
+                                      <h4>{{quiz.nom}} {{quiz.prenom}}</h4>
+                                    </br>
+                                      <span>{{ quiz.fonction}}</span>        
+                                      <p>Domaines d'application :  <span>{% for d in quiz.domaine.all %} {{ d.name}}, {% endfor %}</span> </p>
+                                      <p>Disciplines scientifiques : <span>{% for d in quiz.interests.all %} {{ d.name}}, {% endfor %}</span> </p>
+                                      <p>Adresse email de contact : <span>{{quiz.adresse_email}}</span> </p>
+                                      <p>Composante : <span>{{quiz.composante }}</span> </p>                        
+                                    </div>
+                                  </div>
+      
+    
+    
+                                </div>
+                              </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                            
+    
+                          </ul>
+                    </div>
+                  </div>  
+                </div>
+    
+                <div  class="sa_t_container">
+                  <div   class="sa_t_container-head">
+                    <div style="background-color: rgb(116, 139, 255)" class="sa_t_head">Système de protection</div>
+                  </div>
+    
+    
+                
+                  <div style="background-color:rgb(255, 255, 255) ;"  class="sa_t_container-txt">
+                    <div class="sa_t_text">
+                   
+                      <ul>
+                      
+                         
+                          {% for quiz in quizzes %}
+                          {% for chaine in quiz.chaine.all %}
+                            {% if chaine.name_chaine == "Système de protection" %}
+                     
+                          
+                             <li> <a id="myBtn" href="#popup1"  style="color: black;"><i class="fas fa-eye"  class="genric-btn default circle"> {{ quiz.nom}} {{ quiz.prenom}}</i> </a></li>
+                          
+                           
+                  
+                          
+    
+                          
+                            <div id="popup1" class="overlay">
+                              <div class="popup">
+                                <h2>Here Pop UP</h2>
+                                <a class="close" href="#">×</a>
+                                <div class="content">
+                                  Thank to pop me out of that button, but now i'm done so you can close this window.
+    
+              
+                                  <div class="col-lg-5">
+                                    <div class="hero-img">
+                                      <img src="{{ forum.image.url }}" alt="">
+                                    </div>
+                                  </div>
+                                    
+                                  <div class="col-lg-7">
+                                    <div class="content">
+                                    
+                                      <h4>{{quiz.nom}} {{quiz.prenom}}</h4>
+                                    </br>
+                                      <span>{{ quiz.fonction}}</span>        
+                                      <p>Domaines d'application :  <span>{% for d in quiz.domaine.all %} {{ d.name}}, {% endfor %}</span> </p>
+                                      <p>Disciplines scientifiques : <span>{% for d in quiz.interests.all %} {{ d.name}}, {% endfor %}</span> </p>
+                                      <p>Adresse email de contact : <span>{{quiz.adresse_email}}</span> </p>
+                                      <p>Composante : <span>{{quiz.composante }}</span> </p>                        
+                                    </div>
+                                  </div>
+      
+    
+    
+                                </div>
+                              </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                            
+    
+                          </ul>
+                    </div>
+                  </div>  
+                </div>
+     
+                <div  class="sa_t_container">
+                  <div   class="sa_t_container-head">
+                    <div style="background-color: rgb(240, 116, 255)" class="sa_t_head">Traitement des données</div>
+                  </div>
+    
+    
+                
+                  <div style="background-color:rgb(255, 255, 255) ;"  class="sa_t_container-txt">
+                    <div class="sa_t_text">
+                   
+                      <ul>
+                      
+                         
+                          {% for quiz in quizzes %}
+                          {% for chaine in quiz.chaine.all %}
+                            {% if chaine.name_chaine == "Système de traitement des données" %}
+                     
+                          
+                             <li> <a id="myBtn" href="#popup1"  style="color: black;"><i class="fas fa-eye"  class="genric-btn default circle"> {{ quiz.nom}} {{ quiz.prenom}}</i> </a></li>
+                          
+                           
+                  
+                          
+    
+                          
+                            <div id="popup1" class="overlay">
+                              <div class="popup">
+                                <h2>Here Pop UP</h2>
+                                <a class="close" href="#">×</a>
+                                <div class="content">
+                                  Thank to pop me out of that button, but now i'm done so you can close this window.
+    
+              
+                                  <div class="col-lg-5">
+                                    <div class="hero-img">
+                                      <img src="{{ forum.image.url }}" alt="">
+                                    </div>
+                                  </div>
+                                    
+                                  <div class="col-lg-7">
+                                    <div class="content">
+                                    
+                                      <h4>{{quiz.nom}} {{quiz.prenom}}</h4>
+                                    </br>
+                                      <span>{{ quiz.fonction}}</span>        
+                                      <p>Domaines d'application :  <span>{% for d in quiz.domaine.all %} {{ d.name}}, {% endfor %}</span> </p>
+                                      <p>Disciplines scientifiques : <span>{% for d in quiz.interests.all %} {{ d.name}}, {% endfor %}</span> </p>
+                                      <p>Adresse email de contact : <span>{{quiz.adresse_email}}</span> </p>
+                                      <p>Composante : <span>{{quiz.composante }}</span> </p>                        
+                                    </div>
+                                  </div>
+      
+    
+    
+                                </div>
+                              </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                            
+    
+                          </ul>
+                    </div>
+                  </div>  
+                </div>
+
+
+         
+              </div>    
+           
+
+             
+          </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <!--All startups Start -->
+		   <section class="all-starups-area section-padding2">
+            
+            <!-- left Contents -->
+            <div class="starups">
+                <div class="starups-details">
+                    <!-- Section Tittle -->
+
+                    <div class="section-tittle section-tittle3">
+                       
+                        <h2>Chaine de Connaissances</h2>
+                    </div>
+                    <!-- details caption -->
+                    <div class="details-caption">
+                        <p>Cnsectetur adipisicing cvbelit, sxced dbeo eiucdsmod tempor incididunt ut labore egsfgt dolore magna aliqua. Ut encim ad minim veniam, quis nostrud exercitation ulclamco laboris nisi ufgut aliquip edgx ebrha.</p>
+                        <p>Cnsectetur adipisicing cvbelit, sxced dbeo eiucdsmod tempor incididunt ut labore egsfgt folorem.</p>
+                    </div>
+					<div><a href="#1" class="btn">get started</a>
+						<a href="#1" class="btn">Back</a></div>
+                </div>
+            </div>
+            <!--Right Contents  -->
+            <div class="starups-img">
+                <img  style="width: 80%;
+                height: 80%;" src="{% static 'assets/img/gallery/Image3.png' %}" alt="">
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<section class="search-domain-area section-bg pt-140 pb-140" data-background="{% static 'assets/img/gallery/section_bg02.jpg' %}">
+		<div class="container">
+			<div class="row align-items-end mb-80">
+				<div class="col-xl-8">
+					<!-- Section Tittle -->
+					<div class="section-tittle section-tittle2">
+						<span>Get your domain</span>
+						<h2>  Chercher des Experts pour le {{ projet.titre_projet}}</h2>
+					</div>
+				</div>
+	
+			</div>
+
+			<div class="row">
+				<div class="domain-list">
+					<div  style="justify-content: center;">
+						
+						<a href="#" style="background-color: rgb(255, 116, 116)" class="genric-btn default circle">Montage des projets</a>
+					</div>
+					<div >
+						<a href="#" style="background-color:rgb(255, 221, 116)" class="genric-btn default circle">Substrats/Matériaux</a>
+					</div>
+					<div >
+						<a href="#" style="background-color: rgb(116, 255, 159)" class="genric-btn default circle">Système de détection</a>
+					</div>
+					<div >
+						<a href="#" style="background-color: rgb(116, 139, 255)" class="genric-btn default circle">Système de protection</a>
+					</div>
+					<div >
+						<a href="#" style="background-color: rgb(240, 116, 255)" class="genric-btn default circle">Système de traitement des données</a>
+					</div>
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="domain-list">
+         
+					<div class="single-domain">
+            {% for quiz in quizzes %}
+						<span>.com</span>
+            <p>{{ quiz.nom}} {{ quiz.prenom}}</p>
+            {% endif %}
+          </div>
+       
+          {% empty %}
+				
+						<td class="bg-light text-center font-italic" colspan="4">No expert.</td>
+				
+		    	{% endfor %}
+					<div class="single-domain">
+						<span>.net</span>
+						<p>$2.99/Year</p>
+					</div>
+					<div class="single-domain">
+						<span>.com</span>
+						<p>$3.99/Year</p>
+					</div>
+					<div class="single-domain">
+						<span>.co</span>
+						<p>$5.99/Year</p>
+					</div>
+					<div class="single-domain">
+						<span>.org</span>
+						<p>$2.99/Year</p>
+					</div>
+					<div class="single-domain">
+						<span>.live</span>
+						<p>$1.99/Year</p>
+					</div>
+				</div>
+			</div>
+		
+
+		</div>
+		<!-- Domain List -->
+	
+
+
+
+
+
+
+
+
+
+
+
+			
+			<!-- Domain List  End-->
+		</div>
+	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+	</main>
+    <footer>
+        <!-- Footer Start-->
+        <div class="footer-area">
+            <div class="container">
+               <div class="footer-top footer-padding">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="single-footer-caption mb-30">
+                                    <!-- logo -->
+                                    <div class="footer-logo">
+                                        <a href="index.html"><img src="{% static 'assets/img/logo/logo2_footer.png' %}" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>All packages</h4>
+                                    <ul>
+                                        <li><a href="#">Package-1</a></li>
+                                        <li><a href="#">Package-2</a></li>
+                                        <li><a href="#">Package-3</a></li>
+                                        <li><a href="#">Custome</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Quick Link</h4>
+                                    <ul>
+                                        <li><a href="#">Contact Us</a></li>
+                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="#">News & Articles</a></li>
+                                        <li><a href="#">Privacy Policy</a></li>     
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>+1 514 648 256</h4>
+                                    <ul>
+                                        <li><a href="#">youremail@gmail.com</a></li>
+                                    </ul>
+                                    <p>123 East 26th Street, Fifth Floor, New York, NY 10011</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+                <div class="footer-bottom">
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-xl-9 col-lg-9 ">
+                            <div class="footer-copy-right">
+                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3">
+                            <!-- Footer Social -->
+                            <div class="footer-social f-right">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-globe"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+        <!-- Footer End-->
+    </footer>
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+
+<!-- JS here -->
+	
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+        <script src="{% static 'assets/js/popper.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{% static 'assets/js/jquery.slicknav.min.js' %}"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'assets/js/slick.min.js' %}"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{% static 'assets/js/wow.min.js' %}"></script>
+		<script src="{% static 'assets/js/animated.headline.js' %}"></script>
+		<script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
+		
+		<!-- Nice-select, sticky -->
+        <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+		<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+        
+        <!-- contact js -->
+        <script src="{% static 'assets/js/contact.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.form.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'assets/js/mail-script.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="{% static 'assets/js/plugins.js' %}"></script>
+		<script src="{% static 'assets/js/main.js' %}"></script>
+		
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <!--All startups Start -->
+           <section class="all-starups-area section-padding2">
+            
+            <!-- left Contents -->
+            <div class="starups">
+                <div class="starups-details">
+                    <!-- Section Tittle -->
+
+                    <div class="section-tittle section-tittle3">
+                       
+                        <h2>Chaine de Connaissances</h2>
+                    </div>
+                    <!-- details caption -->
+                    <div class="">
+                        <p>Cnsectetur adipisicing cvbelit, sxced dbeo eiucdsmod tempor incididunt ut labore egsfgt dolore magna aliqua. Ut encim ad minim veniam, quis nostrud exercitation ulclamco laboris nisi ufgut aliquip edgx ebrha.</p>
+                        <p>Cnsectetur adipisicing cvbelit, sxced dbeo eiucdsmod tempor incididunt ut labore egsfgt folorem.</p>
+					
+						{% for quiz in list_chaine %}
+			
+							  <div class="single-domain">
+							
+								  <p>{{ quiz.pk}} </p>
+								  <p>{{ quiz.name_chaine}} </p>
+							  </div>
+				
+							  {% endfor %}
+					
+					
+					
+					
+					
+					</div>
+					<div><a href="#1" class="btn">get started</a>
+						<a href="#1" class="btn">Back</a></div>
+                </div>
+            </div>
+            <!--Right Contents  -->
+            <div class="starups-img">
+                <img  style="width: 80%;
+                height: 80%;" src="{% static 'assets/img/gallery/Image3.png' %}" alt="">
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<section class="search-domain-area section-bg pt-140 pb-140" data-background="{% static 'assets/img/gallery/section_bg02.jpg' %}">
+		<div class="container">
+			<div class="row align-items-end mb-80">
+				<div class="col-xl-8">
+					<!-- Section Tittle -->
+					<div class="section-tittle section-tittle2">
+						<span>Cap-MAt</span>
+						<h2> Chaine de Connaissaces proposée </h2>
+					</div>
+				</div>
+	
+			</div>
+
+			<div class="row">
+				<div class="domain-list">
+
+		
+					<div>
+						<a href="#" style="background-color: rgb(255, 116, 116)" class="genric-btn default circle">Montage des projets</a>
+						
+				
+					</div>
+					
+					
+					<div >
+						<a href="#" style="background-color:rgb(255, 221, 116)" class="genric-btn default circle">Substrats/Matériaux</a>
+					</div>
+				
+					<div >
+						<a href="#" style="background-color: rgb(116, 255, 159)" class="genric-btn default circle">Système de détection</a>
+					</div>
+
+					<div >
+						<a href="#" style="background-color: rgb(116, 139, 255)" class="genric-btn default circle">Système de protection</a>
+					</div>
+					<div >
+						<a href="#" style="background-color: rgb(240, 116, 255)" class="genric-btn default circle">Système de traitement des données</a>
+					</div>
+			
+				
+					
+				</div>
+			</div>
+			<div class="row">
+				<div class="domain-list">
+				
+
+       
+			
+
+						  <div class="single-domain">	  
+						  {% for quiz in quizzes %}
+						  {% for chaine in quiz.chaine.all %}
+							  {% if chaine.name_chaine == "Montage des projets" %}
+			
+						<ol>
+							<li><a  id="myBtn">{{ quiz.nom}} {{ quiz.prenom}}</a> 	</li>
+
+						
+
+
+
+<!-- Trigger/Open The Modal -->
+
+
+<!-- The Modal -->
+
+
+
+
+
+						
+						</ol>
+					
+				
+								
+									{% endif %}
+									{% endfor %}
+									{% endfor %}
+						  </div>
+							
+						
+						  <div class="single-domain">
+							{% for quiz in quizzes %}
+							{% for chaine in quiz.chaine.all %}
+							  {% if chaine.name_chaine == "Substrats/ Matériaux" %}
+							  <ol>
+								<li><a  id="myBtn">{{ quiz.nom}} {{ quiz.prenom}}</a> 	</li>
+							
+							</ol>
+	
+	
+
+
+
+
+
+
+
+
+
+
+							 
+								
+									{% endif %}
+								{% endfor %}
+								{% endfor %}
+						  </div>
+							
+	
+
+
+			
+							
+								<div class="single-domain">
+									{% for quiz in quizzes %}
+									{% for chaine in quiz.chaine.all %}
+									{% if chaine.name_chaine == "Système de détection" %}
+									<ol>
+										<li>							  <span>{{ quiz.nom}} {{ quiz.prenom}}</span></li>
+									</ol>
+			
+										  
+										  {% endif %}
+										  {% endfor %}
+										  {% endfor %}
+								</div>
+									 
+		  
+									  <div class="single-domain">
+										  
+									  {% for quiz in quizzes %}
+									  {% for chaine in quiz.chaine.all %}
+										  {% if chaine.name_chaine == "Système de protection" %}
+										  <ol>
+											<li><a  href="#open-modal">{{ quiz.nom}} {{ quiz.prenom}}</a> 	</li>
+				
+										
+							
+									
+				
+				
+				<!-- Trigger/Open The Modal -->
+				
+				
+				<!-- The Modal -->
+				
+				
+				
+				
+				
+										
+										</ol>
+				
+				
+									
+												{% endif %}
+												{% endfor %}
+												{% endfor %}
+									  </div>
+										
+
+
+
+								
+											<div class="single-domain">
+												{% for quiz in quizzes %}
+												{% for chaine in quiz.chaine.all %}
+												{% if chaine.name_chaine == "Système de traitement des données" %}
+												<ol>
+													<li><a  id="myBtn">{{ quiz.nom}} {{ quiz.prenom}}</a> 	</li>
+						
+												
+						
+						
+						
+						<!-- Trigger/Open The Modal -->
+						
+						
+						<!-- The Modal -->
+						
+						
+						
+						
+						
+												
+												</ol>
+						
+						
+																						
+													  {% endif %}
+													  {% endfor %}
+													  {% endfor %}
+											</div>
+											
+					  
+
+
+
+				</div>
+			</div>
+		
+
+		</div>
+		<!-- Domain List -->
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

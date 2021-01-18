@@ -1,0 +1,1168 @@
+
+
+{% load i18n %}
+{% trans alert %}
+
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>CAP-MAT </title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+
+ <!-- CSS here -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+	 
+		
+        <style>
+
+
+
+          .notification {
+            position: relative;
+            width: 2em;
+            height: 2em;
+          }
+          .notification svg {
+            width: 2em;
+            height: 2em;
+          }
+          .notification svg > path {
+            fill: #FFFFFF;
+          }
+          .notification--bell {
+            animation: bell 2.2s linear infinite;
+            transform-origin: 50% 0%;
+          }
+           .notification--bellClapper {
+            animation: bellClapper 2.2s 0.1s linear infinite;
+          }
+          .notification--num {
+            position: absolute;
+            top: 0%;
+            left: 60%;
+            font-size: 1rem;
+            border-radius: 50%;
+            width: 1.75em;
+            height: 1.75em;
+            background-color: #FF4C13;
+            
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 1.7em;
+            animation: notification 3.2s ease;
+          }
+          
+          @keyframes bell {
+            0%, 25%, 75%, 100% {
+            transform: rotate(0deg);
+            }
+            40% {
+            transform: rotate(2deg);
+            }
+            45% {
+            transform: rotate(-2deg);
+            }
+            55% {
+            transform: rotate(1deg);
+            }
+            60% {
+            transform: rotate(-1deg);
+            }
+          }
+          @keyframes bellClapper {
+            0%, 25%, 75%, 100% {
+            transform: translateX(0);
+            }
+            40% {
+            transform: translateX(-0.15em);
+            }
+            45% {
+            transform: translateX(0.15em);
+            }
+            55% {
+            transform: translateX(-0.1em);
+            }
+            60% {
+            transform: translateX(0.1em);
+            }
+          }
+          @keyframes notification {
+            0%, 25%, 75%, 100% {
+            opacity: 1;
+            }
+            30%, 70% {
+            opacity: 0;
+            }
+          }
+          
+        
+        
+        .box {
+        width: 40%;
+        margin: 0 auto;
+        background: rgba(255,255,255,0.2);
+        padding: 35px;
+        border: 2px solid #fff;
+        border-radius: 20px/50px;
+        background-clip: padding-box;
+        text-align: center;
+        }
+        
+        .button {
+        font-size: 1em;
+        padding: 10px;
+        color: #fff;
+        border: 2px solid blue;
+        border-radius: 20px/50px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+        }
+        .button:hover {
+        background: blue;
+        }
+        
+        .overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        transition: opacity 500ms;
+        visibility: hidden;
+        opacity: 0;
+        }
+        .overlay:target {
+        visibility: visible;
+        opacity: 1;
+        }
+        
+        .popup {
+        margin: 70px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 5px;
+        width: 30%;
+        position: relative;
+        transition: all 5s ease-in-out;
+        }
+        
+        .popup h2 {
+        margin-top: 0;
+        color: #333;
+        font-family: Tahoma, Arial, sans-serif;
+        }
+        .popup .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        transition: all 0ms;
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+        }
+        .popup .close:hover {
+        color: #06D85F;
+        }
+        .popup .content {
+        max-height: 30%;
+        overflow: auto;
+        }
+        
+        @media screen and (max-width: 700px){
+        .box{
+        width: 70%;
+        }
+        .popup{
+        width: 70%;
+        }
+        }
+        
+        
+        
+        .sa_t_all {
+        margin:50px 0 30px 0;
+        padding:0px;
+        font-size:20px;
+        font-family:arial, helvetica-neue;
+        width:800px;
+        height:400px;
+        }
+        
+        .sa_t_all ul{
+        padding:0 0 0 10px;
+        margin:0;
+        }
+        
+        .sa_t_container{
+        float:left;
+        margin:10px;
+        width:30%;
+        height:100%;
+        }
+        
+        .sa_t_container-head{
+        background:#5B9BD5;
+        height:20%;
+        width:100%;
+        display:table;
+        color:#fff;
+        }
+        .sa_t_head{
+        display:table-cell;
+        vertical-align:middle;
+        padding:20px;
+        text-align:center;
+        }
+        
+        .sa_t_container-txt{
+        background:#D6E1F1;
+        height:80%;
+        width:100%;
+        display:table;
+        color:#000;
+        }
+        .sa_t_text{
+        display:table-cell;
+        vertical-align:top;
+        padding:20px;
+        }
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          </style>
+        
+        
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+ 
+    <header>
+      <!-- Header Start -->
+      <div class="header-area header_area header-transparent">
+          <div class="main-header">
+          <div class="header-bottom  header-sticky">
+              <div class="container-fluid">
+                <div class="row align-items-center">
+                  
+    
+                  <div class="col-xl-2 col-lg-1 col-md-1">
+                    <div class="logo">
+                    <a href="{% url 'home' %}"><img src="{% static 'assets/img/logo/Inedit.jpg' %}" alt="CAP-MAT"></a>
+                    </div>
+                  </div>
+                
+                  <div class="col-xl-8 col-lg-8 col-md-8">
+                    <!-- Main-menu -->
+                    <div class="main-menu f-right d-none d-lg-block">
+    
+    
+    
+    
+                              {% load notifications_tags %}
+                              {% notifications_unread as unread_count %}
+                            
+    
+    
+                      <nav> 
+                        <ul id="navigation">                                                                                                                                     
+                          <li><a href="{% url 'students:first_page' %}">{% trans 'Accueil' %}</a></li>
+                          
+                        
+                          
+                          <li><a >Projets</a>
+                            <ul class="submenu">
+                              <li><a href="{% url 'students:lanceur_projet_home' %}">{% trans 'Nouveau projet'%}</a></li>
+                              <li><a href="{% url 'students:mes_projets' %}">{% trans 'Liste de mes projets '%}</a></li>
+                            </ul>
+                          </li>
+    
+                          <li><a href="{% url 'students:collaborations' %}">Collaborations</a>
+                            <ul class="submenu">
+                              <li><a href="{% url 'students:list_actuelle' %}">Mes Collaborations actuelles</a></li>
+                              <li><a href="{% url 'students:list_potentielle' %}">Mes Collaborations potentielles</a></li>
+                            </ul>
+                          </li>
+                          
+    
+                          <li><a href="{% url 'students:technologies' %}">Technologies</a>
+                            <ul class="submenu">
+                              <li><a href="{% url 'students:MesTechnologies_list' %}">La Banque de Technologie</a></li>
+                              <li><a href="{% url 'students:capteur_home' %}">Mes Technologies</a></li>
+                            </ul>
+                          </li>
+                          
+                          <li><a href="{% url 'students:expert_home' %}">Experts</a>
+                            <ul class="submenu">
+                              <li><a href="{% url 'students:Annuaire' %}">Annuaire des experts</a></li>
+                              <li><a href="{% url 'students:liste' %}">Liste des Experts de mes projets</a></li>
+                            </ul>
+                          </li>
+                        
+                          <li><a   href="{% url 'notice:inbox' %}"><i class="fas fa-envelope fa-2x"></i><span class="badge badge-danger" >{% if unread_count %}{{ unread_count }}</span>{% endif %}</a></li>
+                          
+                        
+                            <li><a href="{% url 'students:profile' %}"> <i class="far fa-address-card fa-2x"></i></a>
+                              <ul class="submenu">
+                                <li><a href="{% url 'students:profile' %}">{{ request.user.username }}</a></li>
+                                <li><a href="{% url 'students:profile' %}">Mon Profile</a></li>
+                                <li><a href="{% url 'notice:inbox' %}"> Inbox {% if unread_count %} </span>{% endif %}</a></li>
+                                <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+                              </ul>
+                            </li>
+    
+                            
+    
+                           
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>             
+                  <div class="col-xl-2 col-lg-3 col-md-3">
+                    <div class="header-right-btn f-right d-none d-lg-block">
+                      
+                        <div class="notification">
+                          <svg viewbox="0 0 166 197">
+                            <path d="M82.8652955,196.898522 C97.8853137,196.898522 110.154225,184.733014 110.154225,169.792619 L55.4909279,169.792619 C55.4909279,184.733014 67.8452774,196.898522 82.8652955,196.898522 L82.8652955,196.898522 Z" class="notification--bellClapper"></path>
+                          <path d="M146.189736,135.093562 L146.189736,82.040478 C146.189736,52.1121695 125.723173,27.9861651 97.4598237,21.2550099 L97.4598237,14.4635396 C97.4598237,6.74321823 90.6498186,0 82.8530327,0 C75.0440643,0 68.2462416,6.74321823 68.2462416,14.4635396 L68.2462416,21.2550099 C39.9707102,27.9861651 19.5163297,52.1121695 19.5163297,82.040478 L19.5163297,135.093562 L0,154.418491 L0,164.080956 L165.706065,164.080956 L165.706065,154.418491 L146.189736,135.093562 Z" class="notification--bell"></path>
+                          </svg>
+                          {% if unread_count %}
+                          <span><a  class="notification--num"href="{% url 'notice:list' %}" >{{ unread_count }}</a></span>  
+                          {% endif %}
+                          </div>
+                        
+                      
+                    </div>
+                  </div>
+                  <!-- Mobile Menu -->
+                  <div class="col-12">
+                    <div class="mobile_menu d-block d-lg-none"></div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          </div>
+      </div>
+      <!-- Header End -->
+    </header>
+ 
+ 
+ 
+	<main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+    
+      <section class="search-domain-area section-bg pt-140 pb-140" data-background="{% static 'assets/img/gallery/section_bg02.jpg' %}">
+        <div class="container">
+          <div class="row align-items-end mb-80">
+            <div class="col-xl-8">
+              <!-- Section Tittle -->
+              <div class="section-tittle section-tittle2">
+                
+                <h2>  Chaine de connaissances du projet</h2>
+                <span></span>
+              </div>
+            </div>
+      
+          </div>
+      
+          <div class="row">
+            <div class="domain-list">
+              <div  style="justify-content: center;">
+                
+                <a href="#" style="background-color: rgb(255, 116, 116)" class="genric-btn default circle">Montage des projets</a>
+              </div>
+              <div >
+                <a href="#" style="background-color:rgb(255, 221, 116)" class="genric-btn default circle">Substrats/Matériaux</a>
+              </div>
+              <div >
+                <a href="#" style="background-color: rgb(116, 255, 159)" class="genric-btn default circle">Système de détection</a>
+              </div>
+              <div >
+                <a href="#" style="background-color: rgb(116, 139, 255)" class="genric-btn default circle">Système de protection</a>
+              </div>
+              <div >
+                <a href="#" style="background-color: rgb(240, 116, 255)" class="genric-btn default circle">Système de traitement des données</a>
+              </div>
+      
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="domain-list">
+         
+              <div class="single-domain">
+                <span>.01</span>
+                
+               {% for colabo in chaine_conn %}
+               {% for chaine in colabo.expert.student.chaine.all %}
+               {% if chaine.name_chaine == "Montage des projets" %}
+               <p>{{colabo.expert.student.nom}} {{colabo.expert.student.prenom}}</p>
+               {% endif %}
+                {% endfor %} 
+                {% endfor %}  
+              </div>
+             
+      
+              <div class="single-domain">
+                <span>.02</span>
+               
+                {% for colabo in chaine_conn %}
+                {% for chaine in colabo.expert.student.chaine.all %}
+                {% if chaine.name_chaine == "Substrats/ Matériaux" %}
+                <p>{{colabo.expert.student.nom}} {{colabo.expert.student.prenom}}</p>
+                 {% endif %}
+                 {% endfor %} 
+                 {% endfor %}  
+
+              </div>
+
+
+              
+              
+              <div class="single-domain">
+                <span>.03</span>
+                {% for colabo in chaine_conn %}
+                {% for chaine in colabo.expert.student.chaine.all %}
+             
+               <p>{{colabo.expert.student.nom}} {{colabo.expert.student.prenom}}</p>
+           
+                {% endfor %} 
+                {% endfor %}  
+              </div>
+              <div class="single-domain">
+                <span>.04</span>
+                {% for colabo in chaine_conn %}
+                {% for chaine in colabo.expert.student.chaine.all %}
+                {% if chaine.name_chaine == "Système de protection" %}
+                 <p>{{colabo.expert.student.nom}} {{colabo.expert.student.prenom}}</p>
+                 {% endif %}
+                 {% endfor %} 
+                 {% endfor %}  
+              </div>
+              <div class="single-domain">
+                <span>.05</span>
+                {% for colabo in chaine_conn %}
+                {% for chaine in colabo.expert.student.chaine.all %}
+                {% if chaine.name_chaine == "Système de traitement des données" %}
+
+                 <p>{{colabo.expert.student.nom}} {{colabo.expert.student.prenom}}</p>
+                 {% endif %}
+                 {% endfor %} 
+                 {% endfor %}  
+              </div>
+         
+            </div>
+                    
+            <div style="justify-content: center;">
+              <br>
+            </div>
+          </div>
+        
+          <div class="row" style="justify-content: center;">
+          
+                    
+            <div style="justify-content: center;"><a href="{% url 'students:collaboration_page' projet.pk %}" class="btn">Checher et ajouter des Experts</a>
+      
+      
+                <a href="{% url 'students:mes_projets' %}" class="btn">Retour</a>
+            </div>
+              
+      
+      
+          </div>
+        </div>
+        <!-- Domain List -->
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+          
+          <!-- Domain List  End-->
+        </div>
+      </section>
+          
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+	</main>
+  <footer>
+    <!-- Footer Start-->
+    <div class="footer-area">
+        <div class="container">
+           <div class="footer-top footer-padding">
+                <div class="row justify-content-between">
+                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="single-footer-caption mb-30">
+                                <!-- logo -->
+                                <div class="footer-logo">
+                                    <a href="index.html"><img src="{% static 'images/Capeuro.JPG' %}" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>All packages</h4>
+                                <ul>
+                                    <li><a href="{% url 'students:mes_projets' %}">Projets</a></li>
+                                    <li><a href="{% url 'students:collaborations' %}">Collaborations</a></li>
+                                    <li><a href="{% url 'students:technologies' %}">Technologies</a></li>
+                                    <li><a href="{% url 'students:expert_home' %}">Experts</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Quick Link</h4>
+                                <ul>
+                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">News & Articles</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>     
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>+1 514 648 256</h4>
+                                <ul>
+                                    <li><a href="#">youremail@gmail.com</a></li>
+                                </ul>
+                                <p>123 East 26th Street, Fifth Floor, New York, NY 10011</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+     <div class="footer-bottom">
+    <div class="row d-flex justify-content-between align-items-center">
+      <div class="col-xl-9 col-lg-9 ">
+        <div class="footer-copy-right">
+          <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script>  <p> <a href="https://erpi.univ-lorraine.fr/fr/">ERPI (Research team on innovation process).</a></p>
+<p>CAPteurs intelligents pour la transformation des MATériaux (des ressources aux produits : CAP-MAT" est cofinancé par l'union européenne dans le cadre opérationnel FEDER-FSE Lorraine et Massif des Vosges 2014-2020</p></a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-3">
+        <!-- Footer Social -->
+        <div class="footer-social f-right">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fas fa-globe"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+   </div>
+        </div>
+    </div>
+    <!-- Footer End-->
+</footer>
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+
+<!-- JS here -->
+	
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+        <script src="{% static 'assets/js/popper.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{% static 'assets/js/jquery.slicknav.min.js' %}"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'assets/js/slick.min.js' %}"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{% static 'assets/js/wow.min.js' %}"></script>
+		<script src="{% static 'assets/js/animated.headline.js' %}"></script>
+		<script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
+		
+		<!-- Nice-select, sticky -->
+        <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+		<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+        
+        <!-- contact js -->
+        <script src="{% static 'assets/js/contact.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.form.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'assets/js/mail-script.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="{% static 'assets/js/plugins.js' %}"></script>
+		<script src="{% static 'assets/js/main.js' %}"></script>
+		
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

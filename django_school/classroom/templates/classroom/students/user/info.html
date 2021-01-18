@@ -1,0 +1,552 @@
+
+
+
+{% load i18n %}
+{% trans alert %}
+
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>CAP-MAT </title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+
+ <!-- CSS here -->
+
+		 <!-- Plugins -->
+		 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		 <link rel="stylesheet" href="{% static 'acro/css/plugins.css' %}" />
+
+ <!-- Core Style Css -->
+ <link rel="stylesheet" href="{% static 'acro/css/style.css'%}" />
+ 
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+
+	 
+		
+		<style>
+
+
+			.notification {
+			  position: relative;
+			  width: 2em;
+			  height: 2em;
+			}
+			.notification svg {
+			  width: 2em;
+			  height: 2em;
+			}
+			.notification svg > path {
+			  fill: #FFFFFF;
+			}
+			.notification--bell {
+			  animation: bell 2.2s linear infinite;
+			  transform-origin: 50% 0%;
+			}
+			 .notification--bellClapper {
+			  animation: bellClapper 2.2s 0.1s linear infinite;
+			}
+			.notification--num {
+			  position: absolute;
+			  top: 0%;
+			  left: 60%;
+			  font-size: 1rem;
+			  border-radius: 50%;
+			  width: 1.75em;
+			  height: 1.75em;
+			  background-color: #FF4C13;
+			  
+			  color: #FFFFFF;
+			  text-align: center;
+			  line-height: 1.7em;
+			  animation: notification 3.2s ease;
+			}
+			
+			@keyframes bell {
+			  0%, 25%, 75%, 100% {
+				transform: rotate(0deg);
+			  }
+			  40% {
+				transform: rotate(2deg);
+			  }
+			  45% {
+				transform: rotate(-2deg);
+			  }
+			  55% {
+				transform: rotate(1deg);
+			  }
+			  60% {
+				transform: rotate(-1deg);
+			  }
+			}
+			@keyframes bellClapper {
+			  0%, 25%, 75%, 100% {
+				transform: translateX(0);
+			  }
+			  40% {
+				transform: translateX(-0.15em);
+			  }
+			  45% {
+				transform: translateX(0.15em);
+			  }
+			  55% {
+				transform: translateX(-0.1em);
+			  }
+			  60% {
+				transform: translateX(0.1em);
+			  }
+			}
+			@keyframes notification {
+			  0%, 25%, 75%, 100% {
+				opacity: 1;
+			  }
+			  30%, 70% {
+				opacity: 0;
+			  }
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+
+    <header>
+		<!-- Header Start -->
+		<div class="header-area header_area header-transparent">
+				<div class="main-header">
+				<div class="header-bottom  header-sticky">
+						<div class="container-fluid">
+							<div class="row align-items-center">
+								<!-- Logo -->
+								
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+								<div class="col-xl-2 col-lg-1 col-md-1">
+									<div class="logo">
+									<a href="{% url 'home' %}"><img src="{% static 'assets/img/logo/Inedit.jpg' %}" alt="CAP-MAT"></a>
+									</div>
+								</div>
+							
+								<div class="col-xl-8 col-lg-8 col-md-8">
+									<!-- Main-menu -->
+									<div class="main-menu f-right d-none d-lg-block">
+	
+	
+	
+	
+														{% load notifications_tags %}
+														{% notifications_unread as unread_count %}
+													
+	
+	
+										<nav> 
+											<ul id="navigation">                                                                                                                                     
+												<li><a href="{% url 'students:first_page' %}">{% trans 'Accueil' %}</a></li>
+											  
+											
+												
+												<li><a >Projets</a>
+													<ul class="submenu">
+														<li><a href="{% url 'students:lanceur_projet_home' %}">{% trans 'Nouveau projet'%}</a></li>
+														<li><a href="{% url 'students:mes_projets' %}">{% trans 'Liste des projets'%}</a></li>
+													</ul>
+												</li>
+	
+												<li><a href="{% url 'students:collaborations' %}">Collaborations</a>
+													<ul class="submenu">
+														<li><a href="{% url 'students:list_actuelle' %}">Collaborations actuelles</a></li>
+														<li><a href="{% url 'students:list_potentielle' %}">Collaborations potentielles</a></li>
+													</ul>
+												</li>
+												
+	
+												<li><a href="{% url 'students:technologies' %}">Technologies</a>
+													<ul class="submenu">
+														<li><a href="{% url 'students:MesTechnologies_list' %}">La Banque de Technologie</a></li>
+														<li><a href="{% url 'students:capteur_home' %}">Mes Technologies</a></li>
+													</ul>
+												</li>
+												
+												<li><a href="{% url 'students:expert_home' %}">Experts</a>
+													<ul class="submenu">
+														<li><a href="{% url 'students:Annuaire' %}">Annuaire des experts</a></li>
+														<li><a href="{% url 'students:liste' %}">Mes Experts</a></li>
+													</ul>
+												</li>
+											
+												<li><a   href="{% url 'notice:inbox' %}">	<i class="fas fa-envelope fa-2x"></i> {% if unread_count %} {% endif %}</a></li>
+											  
+											
+													<li><a href="{% url 'students:profile' %}"> <i class="far fa-address-card fa-2x"></i></a>
+														<ul class="submenu">
+															<li><a href="{% url 'students:profile' %}">{{ request.user.username }}</a></li>
+															<li><a href="{% url 'students:profile' %}">Mon Profile</a></li>
+															<li><a href="{% url 'notice:inbox' %}"> Inbox {% if unread_count %} </span>{% endif %}</a></li>
+															<li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+														</ul>
+													</li>
+	
+													
+												
+		
+													
+	
+	
+												
+	
+	
+													
+									
+	
+	
+	
+											   
+											</ul>
+										</nav>
+									</div>
+								</div>             
+								<div class="col-xl-2 col-lg-3 col-md-3">
+									<div class="header-right-btn f-right d-none d-lg-block">
+										
+											<div class="notification">
+												<svg viewbox="0 0 166 197">
+												  <path d="M82.8652955,196.898522 C97.8853137,196.898522 110.154225,184.733014 110.154225,169.792619 L55.4909279,169.792619 C55.4909279,184.733014 67.8452774,196.898522 82.8652955,196.898522 L82.8652955,196.898522 Z" class="notification--bellClapper"></path>
+												<path d="M146.189736,135.093562 L146.189736,82.040478 C146.189736,52.1121695 125.723173,27.9861651 97.4598237,21.2550099 L97.4598237,14.4635396 C97.4598237,6.74321823 90.6498186,0 82.8530327,0 C75.0440643,0 68.2462416,6.74321823 68.2462416,14.4635396 L68.2462416,21.2550099 C39.9707102,27.9861651 19.5163297,52.1121695 19.5163297,82.040478 L19.5163297,135.093562 L0,154.418491 L0,164.080956 L165.706065,164.080956 L165.706065,154.418491 L146.189736,135.093562 Z" class="notification--bell"></path>
+												</svg>
+												{% if unread_count %}
+											  <span><a  class="notification--num"href="{% url 'notice:list' %}" >{{ unread_count }}</a></span>  
+												{% endif %}
+											  </div>
+											
+										
+									</div>
+								</div>
+								<!-- Mobile Menu -->
+								<div class="col-12">
+									<div class="mobile_menu d-block d-lg-none"></div>
+								</div>
+							</div>
+						</div>
+				</div>
+				</div>
+		</div>
+		<!-- Header End -->
+		</header>
+	<main>
+		  <!-- Services Area End -->
+		          <!-- Support Area End -->
+        <!-- Blog Area Start -->
+      
+        <!-- Blog Area End -->
+        <!-- Search domain Start -->
+
+        <!-- Search domain End -->
+
+    
+ 
+
+        <div class="slider-area slider-bg ">
+            <div class="single-slider d-flex align-items-center slider-height2 ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap text-center pt-50">
+								<h2>Fiche de profil</h2>
+
+                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+   
+            
+        </div>
+
+
+        <section class="hero section-padding" data-scroll-index="2">
+          <div class="container">
+            <div class="row">
+            
+            
+              {% for forum in expert %}
+               
+              <div class="col-lg-5">
+                <div class="hero-img">
+                  <img src="{{ forum.image.url }}" alt="">
+                </div>
+              </div>
+              
+        
+        
+        
+        
+        
+              <div class="col-lg-7">
+				<div class="content">
+				  
+					<h4>{{forum.nom}} {{forum.prenom}}</h4>
+				  </br>
+					<span> {% if froum.fonction.exist %}{{ forum.fonction}}  {% endif %}</span>
+					{% if forum.presentation %} <p>Présentation :  <span></span>  {{ forum.presentation|safe}} {% endif %}</span> </p>
+					{% if forum.mots_cles  %}<p>Mots-clés : <span>{{ forum.mots_cles}}{% endif %}</span> </p>
+				
+					{% if forum.domaine.all %} <p>Domaines d'application :  <span></span> {% for d in forum.domaine.all %} {{ d.name}}, {% endfor %}{% endif %}</span> </p>
+					{% if forum.interests.all  %}<p>Disciplines scientifiques : <span>{% for d in forum.interests.all %} {{ d.name}}, {% endfor %}{% endif %}</span> </p>
+					{% if forum.chaine.all  %}<p>Chaine de connaissances : <span>{% for d in forum.chaine.all %} {{ d.name_chaine}}, {% endfor %}{% endif %}</span> </p>
+					{% if forum.adresse_email %}<p>Adresse email de contact : <span>{{forum.adresse_email}}</span>{% endif %} </p>
+					{% if forum.laboratoire %}<p>Université : <span>{{forum.laboratoire }}</span>{% endif %} </p>
+					{% if forum.composante %}<p>Composante : <span>{{forum.composante }}</span>{% endif %} </p>
+					{% if forum.laboratoire %}<p>Laboratoire : <span>{{forum.laboratoire }}</span>{% endif %} </p>
+					{% if forum.link %}<p>Laboratoire : <span>{{forum.link }}</span>{% endif %} </p>
+				  </div>
+              </div>
+              <div class="section-head text-center col-sm-12">
+                <a href="{% url 'students:favoris' pk_1=projet.pk  pk_2=forum.pk   %}" class="butn butn-light mt-30">
+                  <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                  <span>Ajouter aux Favoris</span>            
+              </a>
+
+
+
+
+                <a href="{% url 'students:expert_confirmation'  pk_1=projet.pk  pk_2=forum.pk  %}" class="butn butn-light mt-30">
+                    <span class="" aria-hidden="true"></span>
+                     <span>Ajouter l'expert au projet</span>           
+                 </a>
+   
+                 <a href="{% url 'students:collaboration_page' projet.pk %}"  class="butn butn-light mt-30">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                  <span>Retour</span>            
+              </a>
+                </div>
+        
+        
+        
+        
+                 {% endfor %}
+            </div>
+          </div>
+        </section>
+        
+    
+    
+        <div class="footer-area">
+            <div class="container">
+               <div class="footer-top footer-padding">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="single-footer-caption mb-30">
+                                    <!-- logo -->
+                                    <div class="footer-logo">
+                                        <a href="index.html"><img src="{% static 'images/Capeuro.JPG' %}" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>All packages</h4>
+                                    <ul>
+                                        <li><a href="{% url 'students:mes_projets' %}">Projets</a></li>
+                                        <li><a href="{% url 'students:collaborations' %}">Collaborations</a></li>
+                                        <li><a href="{% url 'students:technologies' %}">Technologies</a></li>
+                                        <li><a href="{% url 'students:expert_home' %}">Experts</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Quick Link</h4>
+                                    <ul>
+                                        <li><a href="#">Contact Us</a></li>
+                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="#">News & Articles</a></li>
+                                        <li><a href="#">Privacy Policy</a></li>     
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>+1 514 648 256</h4>
+                                    <ul>
+                                        <li><a href="#">youremail@gmail.com</a></li>
+                                    </ul>
+                                    <p>123 East 26th Street, Fifth Floor, New York, NY 10011</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+			   <div class="footer-bottom">
+				<div class="row d-flex justify-content-between align-items-center">
+					<div class="col-xl-9 col-lg-9 ">
+						<div class="footer-copy-right">
+							<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script>  <p> <a href="https://erpi.univ-lorraine.fr/fr/">ERPI (Research team on innovation process).</a></p>
+<p>CAPteurs intelligents pour la transformation des MATériaux (des ressources aux produits : CAP-MAT" est cofinancé par l'union européenne dans le cadre opérationnel FEDER-FSE Lorraine et Massif des Vosges 2014-2020</p></a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-3">
+						<!-- Footer Social -->
+						<div class="footer-social f-right">
+							<a href="#"><i class="fab fa-facebook-f"></i></a>
+							<a href="#"><i class="fab fa-twitter"></i></a>
+							<a href="#"><i class="fas fa-globe"></i></a>
+							<a href="#"><i class="fab fa-instagram"></i></a>
+						</div>
+					</div>
+				</div>
+		   </div>
+            </div>
+        </div>
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+	</main>
+
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+
+<!-- JS here -->
+	
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+        <script src="{% static 'assets/js/popper.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{% static 'assets/js/jquery.slicknav.min.js' %}"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'assets/js/slick.min.js' %}"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{% static 'assets/js/wow.min.js' %}"></script>
+		<script src="{% static 'assets/js/animated.headline.js' %}"></script>
+		<script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
+		
+		<!-- Nice-select, sticky -->
+        <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+		<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+        
+        <!-- contact js -->
+        <script src="{% static 'assets/js/contact.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.form.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'assets/js/mail-script.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="{% static 'assets/js/plugins.js' %}"></script>
+		<script src="{% static 'assets/js/main.js' %}"></script>
+		
+</body>
+</html>
+
+
+
+
+
+
+
